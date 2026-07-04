@@ -18,3 +18,17 @@ body {
   color: var(--color-text-main);
   min-height: 100vh;
 }
+
+.reveal-circle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform, opacity;
+}
