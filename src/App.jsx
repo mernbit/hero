@@ -88,7 +88,9 @@ const App = () => {
     const img = coneImgRef.current
     const requiredScale = getRevealScale()
 
-    // Set the circle to the incoming flavor color
+    // Disable CSS transition during GSAP animation so they don't fight
+    img.style.transition = "none";
+
     gsap.set(circle, {
       backgroundColor: flavor.bgColor,
       scale: 0,
@@ -97,72 +99,71 @@ const App = () => {
 
     const master = gsap.timeline({
       onComplete: () => {
-        // Update wrapper bg BEFORE hiding circle — no flash
-        wrapperRef.current.style.backgroundColor = flavor.bgColor
-        gsap.set(circle, { scale: 0, opacity: 0 })
         isAnimating.current = false
+        img.style.transition = ""; // Restore hover transition
       }
     })
 
-    // ── LABEL: exit — old content leaves ──
-    master.addLabel("exit")
+    master.addLabel("start")
 
-    // Background circle expands from center
+    // 1. Circle expands (Liquid reveal)
     master.to(circle, {
       scale: requiredScale,
-      duration: 0.9,
-      ease: "power4.inOut",
-    }, "exit")
+      duration: 1.8,
+      ease: "expo.inOut",
+    }, "start")
 
-    // Old image exits — scales down, moves down, fades out
+    // 2. Pause exactly 0.25s, then Old Image drops down and fades out cleanly
     master.to(img, {
-      y: 80,
-      scale: 0.95,
+      y: 150,
       opacity: 0,
-      duration: 0.5,
-      ease: "power2.in",
-    }, "exit")
+      duration: 0.6,
+      ease: "power2.inOut",
+    }, "start+=0.25")
 
-    // Old text exits — fades out, shifts up slightly
     master.to([heading, desc, btn], {
       y: -20,
       opacity: 0,
-      duration: 0.3,
-      ease: "power2.in",
-      stagger: 0.04,
-    }, "exit")
+      duration: 0.5,
+      ease: "power2.inOut",
+      stagger: 0.05,
+    }, "start+=0.2")
 
-    // ── LABEL: enter — new content arrives (overlaps with circle expansion) ──
-    master.addLabel("enter", "exit+=0.45")
+    // 3. Swap state EXACTLY at 0.9s (safely after the 0.85s image exit)
+    master.addLabel("swap", "start+=0.9")
 
-    // Swap React state at the midpoint (before enter animations)
     master.call(() => {
       setActiveFlavor(flavor)
-    }, [], "enter-=0.05")
+    }, [], "swap")
 
-    // New image enters — from above, scales up, fades in
-    master.fromTo(img,
-      { y: -80, scale: 0.95, opacity: 0 },
-      {
-        y: 0,
-        scale: 1,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-      }, "enter"
-    )
+    // 4. Update the background explicitly at 1.7s
+    master.set(wrapperRef.current, { backgroundColor: flavor.bgColor }, "start+=1.7")
+    master.set(circle, { scale: 0, opacity: 0 }, "start+=1.85")
 
-    // New text enters — fades in, slides down into place
-    master.fromTo([heading, desc, btn],
-      { y: 20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
-        stagger: 0.08,
-      }, "enter+=0.1"
-    )
+    // 5. Explicitly prepare the new elements just before animating them in protecting against race conditions
+    master.addLabel("enter", "start+=0.95")
+    
+    // Explicitly set starting values for the new image instead of fromTo
+    master.set(img, { y: -150, opacity: 0, scale: 0.95 }, "enter")
+    master.set([heading, desc, btn], { y: 20, opacity: 0 }, "enter")
+
+    // 6. Animate the new image and text in smoothly
+    master.to(img, {
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      duration: 1.0,
+      ease: "expo.out",
+      clearProps: "transform"
+    }, "enter+=0.05")
+
+    master.to([heading, desc, btn], {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "expo.out",
+      stagger: 0.08,
+    }, "enter+=0.2")
   });
 
   return (
@@ -176,7 +177,7 @@ const App = () => {
 
       <div className="w-full min-h-screen max-w-[1440px] mx-auto px-12 py-6 relative overflow-hidden">
         {/* ── Header ── */}
-        <div className='fixed top-5 left-5 right-5 z-9999 '>
+        <div className='fixed top-3 left-5 right-5 z-9999 '>
           <header className="flex items-center justify-between pb-6 ">
             <div className="flex items-center gap-2.5">
               <div className="w-11 h-11 rounded-full bg-accent flex items-center justify-center">
