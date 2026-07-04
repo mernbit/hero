@@ -1,8 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import './App.css'
 import { useGSAP } from '@gsap/react'
 
 import blueberryCone from './assets/blueberry-cone.png'
+import vanillaCone from './assets/vanilla-cone.png'
+import chocolateCone from './assets/chocolate-cone.png'
+import raspberryCone from './assets/raspberry-cone.png'
+
 import vanillaThumb from './assets/vanilla-thumb.png'
 import chocolateThumb from './assets/chocolate-thumb.png'
 import blueberryThumb from './assets/blueberry-thumb.png'
@@ -10,13 +14,14 @@ import raspberryThumb from './assets/raspberry-thumb.png'
 import gsap from 'gsap'
 
 const flavors = [
-  { name: 'Vanilla', img: vanillaThumb },
-  { name: 'Chocolate', img: chocolateThumb },
-  { name: 'Blueberry', img: blueberryThumb, active: true },
-  { name: 'Raspberry', img: raspberryThumb },
+  { name: 'Vanilla', img: vanillaThumb, cone: vanillaCone, desc: 'Classic, creamy, and smooth vanilla bean perfection.' },
+  { name: 'Chocolate', img: chocolateThumb, cone: chocolateCone, desc: 'Rich, luxurious chocolate fudge delight.' },
+  { name: 'Blueberry', img: blueberryThumb, cone: blueberryCone, desc: 'Sweet, juicy, and refreshingly tangy, a burst of berry bliss.' },
+  { name: 'Raspberry', img: raspberryThumb, cone: raspberryCone, desc: 'Tart and sweet raspberry swirl, perfectly refreshing.' },
 ]
 
 const App = () => {
+  const [activeFlavor, setActiveFlavor] = useState(flavors[2])
   const heroRef = useRef()
   const tl = gsap.timeline()
 
@@ -35,12 +40,24 @@ const App = () => {
         duration: 1,
         delay: 1
       }, 1)
-
+      .from('#stats', {
+        x: 50,
+        opacity: 0,
+        duration: 0.5,
+        delay: 1
+      }, 1)
       .fromTo("#flavors div",
         { x: 50, opacity: 0 },
         { x: 0, opacity: 1, ease: 'power2.in', stagger: 0.1, duration: 0.2 },
         2
-      );
+      )
+      .from('header', {
+        y: -50,
+        opacity: 0,
+        duration: 0.5,
+        delay: 2,
+        ease: 'power2.out'
+      }, 1)
   });
 
   return (
@@ -76,21 +93,21 @@ const App = () => {
       <section id='hero' ref={heroRef} className="grid grid-cols-[260px_1fr_260px] grid-rows-[auto_1fr] items-start min-h-[calc(100vh-120px)] relative">
         {/* Left */}
         <div id='left' className="col-start-1 row-start-2 self-end pb-[60px] z-[2]">
-          <h1 className="font-playfair font-black text-[64px] leading-none mb-4 text-text-main">Blueberry</h1>
+          <h1 className="font-playfair font-black text-[64px] leading-none mb-4 text-text-main">{activeFlavor.name}</h1>
           <p className="text-[15px] leading-[1.6] text-text-muted max-w-[220px] mb-7">
-            Sweet, juicy, and refreshingly tangy, a burst of berry bliss.
+            {activeFlavor.desc}
           </p>
           <button className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:-translate-y-0.5 transition-all">Order Bucket</button>
         </div>
 
         {/* Center */}
         <div id='img' className="col-start-2 row-start-1 row-end-3 flex items-center justify-center z-[1]">
-          <img src={blueberryCone} alt="Blueberry ice cream cone" className="w-[420px] max-w-full h-auto object-contain -mt-5 drop-shadow-2xl hover:scale-105 transition-transform duration-500" />
+          <img src={activeFlavor.cone} alt={`${activeFlavor.name} ice cream cone`} className="w-[420px] max-w-full h-auto object-contain -mt-5 drop-shadow-2xl hover:scale-105 transition-transform duration-500" />
         </div>
 
         {/* Right */}
         <div className="col-start-3 row-start-1 row-end-3 flex flex-col items-end gap-10 pt-2.5">
-          <div className="flex gap-7">
+          <div id='stats' className="flex gap-7">
             <div className="text-center">
               <div className="font-playfair font-bold text-[28px] leading-none">10+</div>
               <div className="text-[12px] text-text-muted mt-1">Flavors</div>
@@ -106,12 +123,14 @@ const App = () => {
           </div>
 
           <div id='flavors' className="flex flex-col gap-1.5 mt-auto">
-            {flavors.map((f) => (
-              <div key={f.name} className={`flex items-center gap-[14px] rounded-full py-2 pr-6 pl-2 min-w-[180px] cursor-pointer border-2 transition-all hover:scale-105 ${f.active ? 'border-lavender bg-white shadow-md' : 'border-transparent bg-bg-card hover:bg-gray-100'}`}>
+            {flavors.map((f) => {
+              const isActive = f.name === activeFlavor.name
+              return (
+              <div key={f.name} onClick={() => setActiveFlavor(f)} className={`flex items-center gap-[14px] rounded-full py-2 pr-6 pl-2 min-w-[180px] cursor-pointer border-2 transition-all hover:scale-105 ${isActive ? 'border-lavender bg-white shadow-md' : 'border-transparent bg-bg-card hover:bg-gray-100'}`}>
                 <img src={f.img} alt={f.name} className="w-12 h-12 rounded-full object-cover shadow-sm" />
                 <span className="text-[15px] font-semibold">{f.name}</span>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       </section>
