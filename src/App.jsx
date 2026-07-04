@@ -176,34 +176,36 @@ const App = () => {
 
       <div className="w-full min-h-screen max-w-[1440px] mx-auto px-12 py-6 relative overflow-hidden">
         {/* ── Header ── */}
-        <header className="flex items-center justify-between pb-6">
-          <div className="flex items-center gap-2.5">
-            <div className="w-11 h-11 rounded-full bg-accent flex items-center justify-center">
-              <svg viewBox="0 0 40 40" fill="none" className="w-[26px] h-[26px]">
-                <circle cx="20" cy="20" r="16" stroke="#fff" strokeWidth="2" />
-                <path d="M12 20c4-8 12-8 16 0" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
-                <path d="M12 20c4 8 12 8 16 0" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
-              </svg>
+        <div className='fixed top-5 left-5 right-5 z-9999 '>
+          <header className="flex items-center justify-between pb-6 ">
+            <div className="flex items-center gap-2.5">
+              <div className="w-11 h-11 rounded-full bg-accent flex items-center justify-center">
+                <svg viewBox="0 0 40 40" fill="none" className="w-[26px] h-[26px]">
+                  <circle cx="20" cy="20" r="16" stroke="#fff" strokeWidth="2" />
+                  <path d="M12 20c4-8 12-8 16 0" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M12 20c4 8 12 8 16 0" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <div className="flex flex-col leading-[1.1]">
+                <span className="font-bold text-[14px] tracking-[1.5px] uppercase">The Creamery</span>
+                <span className="text-[9px] tracking-[2px] uppercase text-text-muted">Since 2024</span>
+              </div>
             </div>
-            <div className="flex flex-col leading-[1.1]">
-              <span className="font-bold text-[14px] tracking-[1.5px] uppercase">The Creamery</span>
-              <span className="text-[9px] tracking-[2px] uppercase text-text-muted">Since 2024</span>
-            </div>
-          </div>
 
-          <nav className="flex items-center gap-0 bg-white rounded-full py-1.5 px-2 shadow-[0_1px_4px_rgba(0,0,0,.06)]">
-            <a className="no-underline text-text-main text-[14px] font-semibold py-2 px-5 rounded-full cursor-pointer bg-bg">Home</a>
-            <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">Products</a>
-            <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">Flavors</a>
-            <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">About</a>
-          </nav>
+            <nav className="flex items-center gap-0 bg-white backdrop-blur-sm rounded-full py-1.5 px-2 shadow-[0_1px_4px_rgba(0,0,0,.06)]">
+              <a className="no-underline text-text-main text-[14px] font-semibold py-2 px-5 rounded-full cursor-pointer bg-bg">Home</a>
+              <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">Products</a>
+              <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">Flavors</a>
+              <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">About</a>
+            </nav>
 
-          {/* empty right placeholder to balance flex */}
-          <div style={{ width: 160 }} />
-        </header>
+            {/* empty right placeholder to balance flex */}
+            <div style={{ width: 160 }} />
+          </header>
+        </div>
 
         {/* ── Hero ── */}
-        <section id='hero' ref={heroRef} className="grid grid-cols-[260px_1fr_260px] grid-rows-[auto_1fr] items-start min-h-[calc(100vh-120px)] relative">
+        <section id='hero' ref={heroRef} className=" mt-14 grid grid-cols-[260px_1fr_260px] grid-rows-[auto_1fr] items-start min-h-[calc(100vh-120px)] relative">
           {/* Left */}
           <div id='left' className="col-start-1 row-start-1 row-end-3 self-center z-[2]">
             <h1 ref={headingRef} className="font-playfair font-black text-[64px] leading-none mb-4 text-text-main">{activeFlavor.name}</h1>
@@ -222,16 +224,16 @@ const App = () => {
           <div className="col-start-3 row-start-1 row-end-3 flex flex-col items-end gap-10 pt-2.5">
             <div id='stats' className="flex gap-7">
               <div className="text-center">
-                <div className="font-playfair font-bold text-[28px] leading-none">10+</div>
-                <div className="text-[12px] text-text-muted mt-1">Flavors</div>
+                <div className="font-playfair font-bold text-[38px] leading-none">10+</div>
+                <div className="text-[18px] text-text-muted mt-1">Flavors</div>
               </div>
               <div className="text-center">
-                <div className="font-playfair font-bold text-[28px] leading-none">11K+</div>
-                <div className="text-[12px] text-text-muted mt-1">Reviews</div>
+                <div className="font-playfair font-bold text-[38px] leading-none">11K+</div>
+                <div className="text-[18px] text-text-muted mt-1">Reviews</div>
               </div>
               <div className="text-center">
-                <div className="font-playfair font-bold text-[28px] leading-none">30+</div>
-                <div className="text-[12px] text-text-muted mt-1">Variations</div>
+                <div className="font-playfair font-bold text-[38px] leading-none">30+</div>
+                <div className="text-[18px] text-text-muted mt-1">Variations</div>
               </div>
             </div>
 
@@ -239,7 +241,7 @@ const App = () => {
               {flavors.map((f) => {
                 const isActive = f.name === activeFlavor.name
                 return (
-                  <div key={f.name} onClick={() => handleFlavorClick(f)} className={`flex items-center gap-[14px] rounded-full py-1 pr-6 pl-2 min-w-[180px] cursor-pointer border-2 transition-all hover:scale-105 ${isActive ? 'border-lavender bg-white shadow-md' : 'border-transparent bg-bg-card hover:bg-gray-100'}`}>
+                  <div key={f.name} onClick={() => handleFlavorClick(f)} className={`flex items-center gap-[14px] rounded-full py-3 pr-14 pl-2 min-w-[180px] cursor-pointer border-2 transition-all hover:scale-105 ${isActive ? 'border-lavender bg-white shadow-md' : 'border-transparent bg-bg-card hover:bg-gray-100'}`}>
                     <img src={f.img} alt={f.name} className="w-12 h-12 rounded-full object-cover shadow-sm" />
                     <span className="text-[15px] font-semibold">{f.name}</span>
                   </div>
