@@ -87,13 +87,6 @@ const App = () => {
 
   const { contextSafe } = useGSAP(() => {
     tl
-      .from("#hero #left", {
-        x: -50,
-        opacity: 0,
-        duration: 0.5,
-        delay: 1
-      }, 1)
-
       .from("#img", {
         y: 50,
         opacity: 0,
@@ -107,24 +100,29 @@ const App = () => {
         duration: 1.5,
         ease: 'power2'
       })
-      .from('#stats', {
-        x: 50,
-        opacity: 0,
-        duration: 0.5,
-        delay: 1
-      }, 1)
-      .fromTo("#flavors div",
-        { x: 50, opacity: 0 },
-        { x: 0, opacity: 1, ease: 'power2.in', stagger: 0.1, duration: 0.2 },
-        2
-      )
       .from('header', {
         y: -50,
         opacity: 0,
         duration: 0.5,
-        delay: 2,
         ease: 'power2.out'
-      }, 1);
+      }, 6.5)
+      .from("#hero #left", {
+        x: -50,
+        opacity: 0,
+        duration: 0.4,
+        ease: "back.out(1.5)"
+      }, 5.5)
+      .from('#stats', {
+        x: 50,
+        opacity: 0,
+        duration: 0.4,
+        ease: "back.out(1.5)"
+      }, 5.5)
+      .fromTo("#flavors div",
+        { x: 50, opacity: 0 },
+        { x: 0, opacity: 1, ease: 'back.out(1.5)', stagger: 0.05, duration: 0.3 },
+        5.5
+      );
 
     tl.addLabel("particlesScatter", 5.5);
     scatterParticles(particleRefs.current, tl, "particlesScatter");
