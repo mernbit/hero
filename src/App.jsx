@@ -1,11 +1,13 @@
 import React from 'react'
 import './App.css'
 import Hero from './pages/Hero'
+import Menu from './pages/Menu'
+
 const App = () => {
   return (
     <div>
       <Hero />
-      <div className="h-screen"></div>
+      <Menu />
     </div>
   )
 }
