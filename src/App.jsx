@@ -63,7 +63,6 @@ const App = () => {
         x: pos.x(),
         y: pos.y(),
         scale: gsap.utils.random(0.7, 1.2),
-        rotation: gsap.utils.random(-180, 180),
         opacity: 1,
         duration: gsap.utils.random(0.8, 1.2),
         ease: 'back.out(1.2)'
@@ -77,13 +76,10 @@ const App = () => {
         x: 0,
         y: 0,
         scale: 0.5,
-        opacity: 1, // Keep opacity 1 until fading fully
+        opacity: 0,
         duration: gsap.utils.random(0.3, 0.5),
         ease: 'power2.inOut'
       }, `${label}+=${gsap.utils.random(0, 0.1)}`);
-
-      // Fade out separately slightly faster at the end of movement
-      timeline.to(p, { opacity: 0, duration: 0.2 }, `${label}+=0.3`);
     });
   };
 
@@ -130,7 +126,7 @@ const App = () => {
         ease: 'power2.out'
       }, 1);
 
-    tl.addLabel("particlesScatter", 3);
+    tl.addLabel("particlesScatter", 5.5);
     scatterParticles(particleRefs.current, tl, "particlesScatter");
   });
 
@@ -181,7 +177,7 @@ const App = () => {
       ease: "power2.inOut",
     }, "start+=0.4")
 
-    master.to([heading, desc, btn], {
+    master.to([heading, desc], {
       y: -20,
       opacity: 0,
       duration: 0.5,
@@ -205,7 +201,7 @@ const App = () => {
 
     // Explicitly set starting values for the new image instead of fromTo
     master.set(img, { y: 150, opacity: 0, scale: 0.95 }, "enter")
-    master.set([heading, desc, btn], { y: 20, opacity: 0 }, "enter")
+    master.set([heading, desc], { y: 20, opacity: 0 }, "enter")
 
     // 6. Animate the new image and text in smoothly
     master.to(img, {
@@ -216,7 +212,7 @@ const App = () => {
       ease: "back.out(1.5)"
     }, "enter+=0.05")
 
-    master.to([heading, desc, btn], {
+    master.to([heading, desc], {
       y: 0,
       opacity: 1,
       duration: 0.8,
@@ -256,8 +252,8 @@ const App = () => {
               </div>
             </div>
 
-            <nav className="flex items-center gap-0 bg-white backdrop-blur-sm rounded-full py-1.5 px-2 shadow-[0_1px_4px_rgba(0,0,0,.06)]">
-              <a className="no-underline text-text-main text-[14px] font-semibold py-2 px-5 rounded-full cursor-pointer bg-bg">Home</a>
+            <nav className="flex items-center gap-0 bg-white/10 border border-white backdrop-blur-sm rounded-full py-1.5 px-2 shadow-[0_1px_4px_rgba(0,0,0,.06)]">
+              <a className="no-underline text-text-main text-[14px] font-semibold py-2 px-5 rounded-full cursor-pointer bg-black/5">Home</a>
               <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">Products</a>
               <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">Flavors</a>
               <a className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors">About</a>
@@ -284,7 +280,7 @@ const App = () => {
             {/* Particles */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[-1]">
               {Array(7).fill(0).map((_, i) => (
-                <img key={i} ref={el => particleRefs.current[i] = el} src={activeFlavor.particle} alt="" className="absolute w-20 h-20 object-contain opacity-0 scale-50" />
+                <img key={i} ref={el => particleRefs.current[i] = el} src={activeFlavor.particle} alt="" className="absolute w-30 h-30 object-contain opacity-0 scale-50" />
               ))}
             </div>
 
