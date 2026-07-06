@@ -55,8 +55,15 @@ const App = () => {
         y: 50,
         opacity: 0,
         duration: 1,
-        delay: 1
+        delay: 1,
+        scale: 0.9,
       }, 1)
+      .to("#img img", {
+        rotateZ: 0,
+        delay: 1,
+        duration: 1.5,
+        ease: 'power2'
+      })
       .from('#stats', {
         x: 50,
         opacity: 0,
@@ -115,7 +122,7 @@ const App = () => {
 
     // 2. Pause exactly 0.25s, then Old Image drops down and fades out cleanly
     master.to(img, {
-      y: 150,
+      y: -150,
       opacity: 0,
       duration: 0.6,
       ease: "power2.inOut",
@@ -142,9 +149,9 @@ const App = () => {
 
     // 5. Explicitly prepare the new elements just before animating them in protecting against race conditions
     master.addLabel("enter", "start+=0.95")
-    
+
     // Explicitly set starting values for the new image instead of fromTo
-    master.set(img, { y: -150, opacity: 0, scale: 0.95 }, "enter")
+    master.set(img, { y: 150, opacity: 0, scale: 0.95 }, "enter")
     master.set([heading, desc, btn], { y: 20, opacity: 0 }, "enter")
 
     // 6. Animate the new image and text in smoothly
@@ -153,8 +160,7 @@ const App = () => {
       scale: 1,
       opacity: 1,
       duration: 1.0,
-      ease: "expo.out",
-      clearProps: "transform"
+      ease: "back.out(1.5)"
     }, "enter+=0.05")
 
     master.to([heading, desc, btn], {
@@ -170,12 +176,12 @@ const App = () => {
     <div
       ref={wrapperRef}
       style={{ backgroundColor: activeFlavor.bgColor }}
-      className="w-full min-h-screen"
+      className="w-full overflow-hidden h-screen"
     >
       {/* ── Reveal Circle ── */}
       <div ref={revealCircleRef} className="reveal-circle" />
 
-      <div className="w-full min-h-screen max-w-[1440px] mx-auto px-12 py-6 relative overflow-hidden">
+      <div className="w-full h-screen max-w-[1440px] mx-auto px-12 py-6 relative overflow-hidden">
         {/* ── Header ── */}
         <div className='fixed top-3 left-5 right-5 z-9999 '>
           <header className="flex items-center justify-between pb-6 ">
@@ -217,8 +223,8 @@ const App = () => {
           </div>
 
           {/* Center */}
-          <div id='img' className="col-start-2 row-start-1 row-end-3 flex items-center justify-center z-[1]">
-            <img ref={coneImgRef} src={activeFlavor.cone} alt={`${activeFlavor.name} ice cream cone`} className="w-[420px] max-w-full h-auto object-contain -mt-5 drop-shadow-2xl" />
+          <div id='img' className="col-start-2 row-start-1 row-end-3 flex items-center justify-center z-1">
+            <img ref={coneImgRef} src={activeFlavor.cone} alt={`${activeFlavor.name} ice cream cone`} className="h-152  rotate-z-320  max-w-full w-auto object-contain -mt-5 drop-shadow-2xl" />
           </div>
 
           {/* Right */}
