@@ -1,14 +1,16 @@
 import React from 'react'
 import './App.css'
-import Hero from './pages/Hero'
-import Menu from './pages/Menu'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import Restaurant from './pages/Restaurant'
 
 const App = () => {
   return (
-    <div>
-      <Hero />
-      <Menu />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/:slug" element={<Restaurant />} />
+        <Route path="*" element={<Navigate to="/the-creamery" replace />} />
+      </Routes>
+    </Router>
   )
 }
 

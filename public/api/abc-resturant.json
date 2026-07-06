@@ -1,0 +1,52 @@
+{
+  "id": "abc-resturant",
+  "name": "ABC Restaurant",
+  "since": "Since 1952",
+  "theme": {
+    "accent": "#E4002B",
+    "lavender": "#E4002B",
+    "bgCard": "#ffffff",
+    "textMain": "#000000",
+    "textMuted": "#666666",
+    "pageBg": "#f2f4f7"
+  },
+  "hero": {
+    "stats": [
+      { "value": "15+", "label": "Meals" },
+      { "value": "50K+", "label": "Orders" },
+      { "value": "5", "label": "Locations" }
+    ],
+    "buttonText": "Order Now"
+  },
+  "flavors": [
+    { 
+      "name": "Krunch Burger", 
+      "img": "/images/vanilla-thumb.png", 
+      "cone": "/images/vanilla-cone.png", 
+      "particle": "/images/vanilla.png", 
+      "desc": "Crispy fried chicken with signature spicy sauce.", 
+      "bgColor": "#ffcccc" 
+    },
+    { 
+      "name": "Mighty Zinger", 
+      "img": "/images/chocolate-thumb.png", 
+      "cone": "/images/chocolate-cone.png", 
+      "particle": "/images/chocolate.png", 
+      "desc": "Double decker zinger fillet for the mighty appetite.", 
+      "bgColor": "#ffe6cc" 
+    },
+    { 
+      "name": "Chicken & Chips", 
+      "img": "/images/blueberry-thumb.png", 
+      "cone": "/images/blueberry-cone.png", 
+      "particle": "/images/blueberry.png", 
+      "desc": "Classic fried chicken with crispy golden fries.", 
+      "bgColor": "#e6e6e6" 
+    }
+  ],
+  "products": [
+    { "id": 1, "title": "Krunch Burger", "price": "310", "image": "/images/vanilla-cone.png" },
+    { "id": 2, "title": "Mighty Zinger", "price": "770", "image": "/images/chocolate-cone.png" },
+    { "id": 3, "title": "Chicken & Chips", "price": "650", "image": "/images/blueberry-cone.png" }
+  ]
+}

@@ -1,18 +1,9 @@
 import React from 'react';
-
-import blueberryCone from '../../assets/blueberry-cone.png';
-import vanillaCone from '../../assets/vanilla-cone.png';
-import chocolateCone from '../../assets/chocolate-cone.png';
-import raspberryCone from '../../assets/raspberry-cone.png';
-
-const menuItems = [
-    { id: 1, title: 'Vanilla Bliss', price: '310', image: vanillaCone },
-    { id: 2, title: 'Choco Delight', price: '770', image: chocolateCone },
-    { id: 3, title: 'Berry Blast', price: '650', image: blueberryCone },
-    { id: 4, title: 'Raspberry Swirl', price: '450', image: raspberryCone },
-];
-
+import { useTenant } from '../../context/TenantContext';
 const Menu = () => {
+    const tenant = useTenant();
+    const menuItems = tenant.products;
+
     return (
         <div id="products" className="w-full bg-[#f2f4f7] relative py-20 overflow-x-hidden border-b-8 border-text-muted">
             <div className="max-w-[1440px] mx-auto px-4 md:px-12">

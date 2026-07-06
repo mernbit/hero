@@ -1,0 +1,61 @@
+{
+  "id": "the-creamery",
+  "name": "The Creamery",
+  "since": "Since 2024",
+  "theme": {
+    "accent": "#1a1a2e",
+    "lavender": "#c4a5de",
+    "bgCard": "#f5eef9",
+    "textMain": "#1a1a1a",
+    "textMuted": "#555555",
+    "pageBg": "#f2f4f7"
+  },
+  "hero": {
+    "stats": [
+      { "value": "10+", "label": "Flavors" },
+      { "value": "11K+", "label": "Reviews" },
+      { "value": "30+", "label": "Variations" }
+    ],
+    "buttonText": "Order Bucket"
+  },
+  "flavors": [
+    { 
+      "name": "Vanilla", 
+      "img": "/images/vanilla-thumb.png", 
+      "cone": "/images/vanilla-cone.png", 
+      "particle": "/images/vanilla.png", 
+      "desc": "Classic, creamy, and smooth vanilla bean perfection.", 
+      "bgColor": "#fcecb4" 
+    },
+    { 
+      "name": "Chocolate", 
+      "img": "/images/chocolate-thumb.png", 
+      "cone": "/images/chocolate-cone.png", 
+      "particle": "/images/chocolate.png", 
+      "desc": "Rich, luxurious chocolate fudge delight.", 
+      "bgColor": "#d4b098" 
+    },
+    { 
+      "name": "Blueberry", 
+      "img": "/images/blueberry-thumb.png", 
+      "cone": "/images/blueberry-cone.png", 
+      "particle": "/images/blueberry.png", 
+      "desc": "Sweet, juicy, and refreshingly tangy, a burst of berry bliss.", 
+      "bgColor": "#AECDEC" 
+    },
+    { 
+      "name": "Raspberry", 
+      "img": "/images/raspberry-thumb.png", 
+      "cone": "/images/raspberry-cone.png", 
+      "particle": "/images/raspberry.png", 
+      "desc": "Tart and sweet raspberry swirl, perfectly refreshing.", 
+      "bgColor": "#F6A6B2" 
+    }
+  ],
+  "products": [
+    { "id": 1, "title": "Vanilla Bliss", "price": "310", "image": "/images/vanilla-cone.png" },
+    { "id": 2, "title": "Choco Delight", "price": "770", "image": "/images/chocolate-cone.png" },
+    { "id": 3, "title": "Berry Blast", "price": "650", "image": "/images/blueberry-cone.png" },
+    { "id": 4, "title": "Raspberry Swirl", "price": "450", "image": "/images/raspberry-cone.png" }
+  ]
+}

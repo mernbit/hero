@@ -16,12 +16,7 @@ import blueberryParticle from '../../assets/blueberry.png'
 import raspberryParticle from '../../assets/raspberry.png'
 import gsap from 'gsap'
 import Navbar from '../../components/Navbar'
-const flavors = [
-    { name: 'Vanilla', img: vanillaThumb, cone: vanillaCone, particle: vanillaParticle, desc: 'Classic, creamy, and smooth vanilla bean perfection.', bgColor: '#fcecb4' },
-    { name: 'Chocolate', img: chocolateThumb, cone: chocolateCone, particle: chocolateParticle, desc: 'Rich, luxurious chocolate fudge delight.', bgColor: '#d4b098' },
-    { name: 'Blueberry', img: blueberryThumb, cone: blueberryCone, particle: blueberryParticle, desc: 'Sweet, juicy, and refreshingly tangy, a burst of berry bliss.', bgColor: '#AECDEC' },
-    { name: 'Raspberry', img: raspberryThumb, cone: raspberryCone, particle: raspberryParticle, desc: 'Tart and sweet raspberry swirl, perfectly refreshing.', bgColor: '#F6A6B2' },
-]
+import { useTenant } from '../../context/TenantContext'
 
 /** Calculate scale needed for a 60px circle to cover the entire viewport */
 const getRevealScale = () => {
@@ -31,6 +26,8 @@ const getRevealScale = () => {
 }
 
 const Hero = () => {
+    const tenant = useTenant()
+    const flavors = tenant.flavors
     const [activeFlavor, setActiveFlavor] = useState(flavors[0])
     const heroRef = useRef()
 
@@ -243,7 +240,7 @@ const Hero = () => {
                         <p ref={descRef} className="text-[14px] lg:text-[15px] leading-[1.6] text-text-muted max-w-[280px] lg:max-w-[220px] mb-7">
                             {activeFlavor.desc}
                         </p>
-                        <button ref={buttonRef} className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:-translate-y-0.5 transition-all">Order Bucket</button>
+                        <button ref={buttonRef} className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:-translate-y-0.5 transition-all">{tenant.hero.buttonText}</button>
                     </div>
 
                     {/* Center */}
@@ -261,18 +258,12 @@ const Hero = () => {
                     {/* Right */}
                     <div className="col-start-1 lg:col-start-3 lg:row-start-1 lg:row-end-3 flex flex-col items-center lg:items-end gap-8 lg:gap-10 lg:pt-2.5 order-3">
                         <div id='stats' className="flex gap-6 lg:gap-7 w-full justify-center lg:justify-end">
-                            <div className="text-center">
-                                <div className="bungee-regular font-bold text-[28px] lg:text-[38px] leading-none">10+</div>
-                                <div className="text-[14px] lg:text-[18px] text-text-muted mt-1">Flavors</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="bungee-regular font-bold text-[28px] lg:text-[38px] leading-none">11K+</div>
-                                <div className="text-[14px] lg:text-[18px] text-text-muted mt-1">Reviews</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="bungee-regular font-bold text-[28px] lg:text-[38px] leading-none">30+</div>
-                                <div className="text-[14px] lg:text-[18px] text-text-muted mt-1">Variations</div>
-                            </div>
+                            {tenant.hero.stats.map((stat, i) => (
+                                <div key={i} className="text-center">
+                                    <div className="bungee-regular font-bold text-[28px] lg:text-[38px] leading-none">{stat.value}</div>
+                                    <div className="text-[14px] lg:text-[18px] text-text-muted mt-1">{stat.label}</div>
+                                </div>
+                            ))}
                         </div>
 
                         <div id='flavors' className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible w-full lg:w-auto py-2 lg:py-0 gap-3 lg:gap-1.5 lg:mt-auto">

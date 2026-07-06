@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTenant } from '../context/TenantContext';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const tenant = useTenant();
 
     return (
         <div className='fixed top-3 left-4 right-4 lg:left-5 lg:right-5 z-9999'>
@@ -15,8 +17,8 @@ const Navbar = () => {
                         </svg>
                     </div>
                     <div className="flex flex-col leading-[1.1]">
-                        <span className="font-bold text-[12px] lg:text-[14px] tracking-[1.5px] uppercase">The Creamery</span>
-                        <span className="text-[8px] lg:text-[9px] tracking-[2px] uppercase text-text-muted">Since 2024</span>
+                        <span className="font-bold text-[12px] lg:text-[14px] tracking-[1.5px] uppercase">{tenant?.name || 'The Creamery'}</span>
+                        <span className="text-[8px] lg:text-[9px] tracking-[2px] uppercase text-text-muted">{tenant?.since || 'Since 2024'}</span>
                     </div>
                 </div>
 
