@@ -1,7 +1,12 @@
-import React from 'react'
-import './App.css'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import Restaurant from './pages/Restaurant'
+import React from "react";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Restaurant from "./pages/Restaurant";
 
 const App = () => {
   return (
@@ -11,7 +16,7 @@ const App = () => {
         <Route path="*" element={<Navigate to="/the-creamery" replace />} />
       </Routes>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -48,5 +48,24 @@
     { "id": 1, "title": "Krunch Burger", "price": "310", "image": "/images/vanilla-cone.png" },
     { "id": 2, "title": "Mighty Zinger", "price": "770", "image": "/images/chocolate-cone.png" },
     { "id": 3, "title": "Chicken & Chips", "price": "650", "image": "/images/blueberry-cone.png" }
-  ]
+  ],
+  "exploreMenu": [
+    { "name": "Promotion", "image": "/images/vanilla-cone.png" },
+    { "name": "Everyday Value", "image": "/images/chocolate-cone.png" },
+    { "name": "Ala-Carte & Combos", "image": "/images/blueberry-cone.png" },
+    { "name": "Signature Boxes", "image": "/images/raspberry-cone.png" },
+    { "name": "Sharing", "image": "/images/vanilla-cone.png" }
+  ],
+  "footer": {
+    "description": "At ABC Restaurant, we serve only the crispiest, juiciest fried chicken made from our secret recipe. Every bite is a crunch of perfection, seasoned with love and spices from around the world.",
+    "phone": "021-111-222-333",
+    "email": "info@abcresturant.pk",
+    "address": "Main Boulevard, Gulshan-e-Iqbal, Karachi",
+    "socials": {
+      "facebook": "https://facebook.com/abcresturant",
+      "instagram": "https://instagram.com/abcresturant"
+    },
+    "links": ["Privacy Policy", "FAQs"],
+    "poweredBy": "Indolj"
+  }
 }

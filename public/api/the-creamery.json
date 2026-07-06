@@ -57,5 +57,25 @@
     { "id": 2, "title": "Choco Delight", "price": "770", "image": "/images/chocolate-cone.png" },
     { "id": 3, "title": "Berry Blast", "price": "650", "image": "/images/blueberry-cone.png" },
     { "id": 4, "title": "Raspberry Swirl", "price": "450", "image": "/images/raspberry-cone.png" }
-  ]
+  ],
+  "exploreMenu": [
+    { "name": "Cones", "image": "/images/vanilla-cone.png" },
+    { "name": "Sundaes", "image": "/images/chocolate-cone.png" },
+    { "name": "Shakes", "image": "/images/blueberry-cone.png" },
+    { "name": "Scoops", "image": "/images/raspberry-cone.png" },
+    { "name": "Specials", "image": "/images/vanilla-cone.png" },
+    { "name": "Party Packs", "image": "/images/chocolate-cone.png" }
+  ],
+  "footer": {
+    "description": "Our ice creams are a symphony of flavors and textures, created from the finest, locally sourced ingredients. With classic favorites like rich, velvety chocolate and creamy vanilla, as well as a diverse range of innovative and exotic options, there's an ice cream to satisfy every palate.",
+    "phone": "0213-5213967",
+    "email": "info@thecreamery.pk",
+    "address": "Yousuf Ali Building, Dr Daud Pota Rd, Karachi",
+    "socials": {
+      "facebook": "https://facebook.com/thecreamery",
+      "instagram": "https://instagram.com/thecreamery"
+    },
+    "links": ["Privacy Policy", "FAQs"],
+    "poweredBy": "Indolj"
+  }
 }
