@@ -1,10 +1,12 @@
 import React, { useState, useMemo } from "react";
 import { useTenant } from "../../context/TenantContext";
+import { useCart } from "../../context/CartContext";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 
 const ExploreMenuPage = () => {
   const tenant = useTenant();
+  const { openModal } = useCart();
   const allProducts = tenant.products;
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -183,6 +185,7 @@ const ExploreMenuPage = () => {
             {filteredProducts.map((item, index) => (
               <div
                 key={item.id}
+                onClick={() => openModal(item)}
                 className="relative bg-white rounded-lg overflow-hidden group cursor-pointer"
                 style={{
                   boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
@@ -271,6 +274,7 @@ const ExploreMenuPage = () => {
                       {item.price}
                     </span>
                     <button
+                      onClick={(e) => { e.stopPropagation(); openModal(item); }}
                       className="flex items-center gap-1.5 py-2 px-4 bg-accent text-white border-none rounded-full text-[12px] font-bold cursor-pointer uppercase tracking-wider hover:brightness-110 hover:scale-105 active:scale-95 transition-all duration-200"
                       style={{ boxShadow: "0 4px 12px rgba(228,0,43,0.25)" }}
                     >

@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { TenantProvider } from "../../context/TenantContext";
+import { CartProvider } from "../../context/CartContext";
 import Hero from "../Hero";
 import Menu from "../Menu";
 import Footer from "../../components/Footer";
@@ -13,13 +14,15 @@ const Restaurant = () => {
 
   return (
     <TenantProvider slug={slug}>
-      <div className="w-full">
-        <Hero />
-        <ExploreMenu />
-        <Menu />
-        <TopDeals />
-        <Footer />
-      </div>
+      <CartProvider>
+        <div className="w-full">
+          <Hero />
+          <ExploreMenu />
+          <Menu />
+          <TopDeals />
+          <Footer />
+        </div>
+      </CartProvider>
     </TenantProvider>
   );
 };

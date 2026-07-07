@@ -21,38 +21,38 @@
   "flavors": [
     { 
       "name": "Krunch Burger", 
-      "img": "/images/zinger-burger.png", 
-      "cone": "/images/zinger-burger.png", 
-      "particle": "/images/chicken-wings.png", 
+      "img": "https://www.kfcpakistan.com/images/3df28210-0356-11f1-b8c8-9d1458b09f1f-KrunchBurger_variant_0-2026-02-06122036.png", 
+      "cone": "https://www.kfcpakistan.com/images/3df28210-0356-11f1-b8c8-9d1458b09f1f-KrunchBurger_variant_0-2026-02-06122036.png", 
+      "particle": "https://www.kfcpakistan.com/images/3ae70cb0-0c9f-11f1-94b0-4f40f45967a3-SalsaSprinkleWings2_variant_0-2026-02-18075545.png", 
       "desc": "Crispy fried chicken with signature spicy sauce.", 
       "bgColor": "#ffcccc" 
     },
     { 
       "name": "Mighty Zinger", 
-      "img": "/images/chicken-wrap.png", 
-      "cone": "/images/chicken-wrap.png", 
-      "particle": "/images/chicken-strips.png", 
+      "img": "https://www.kfcpakistan.com/images/479d9a50-033f-11f1-80f2-d9425fcae453-MightyBurger_variant_0-2026-02-06093614.png", 
+      "cone": "https://www.kfcpakistan.com/images/479d9a50-033f-11f1-80f2-d9425fcae453-MightyBurger_variant_0-2026-02-06093614.png", 
+      "particle": "https://www.kfcpakistan.com/images/3ae70cb0-0c9f-11f1-94b0-4f40f45967a3-SalsaSprinkleWings2_variant_0-2026-02-18075545.png", 
       "desc": "Double decker zinger fillet for the mighty appetite.", 
       "bgColor": "#ffe6cc" 
     },
     { 
       "name": "Chicken & Chips", 
-      "img": "/images/chicken-strips.png", 
-      "cone": "/images/chicken-strips.png", 
-      "particle": "/images/crispy-bucket.png", 
+      "img": "https://www.kfcpakistan.com/images/b5d1f500-0332-11f1-be61-8b04dd48299d-3pcBonelessStrips_variant_0-2026-02-06080615.png", 
+      "cone": "https://www.kfcpakistan.com/images/b5d1f500-0332-11f1-be61-8b04dd48299d-3pcBonelessStrips_variant_0-2026-02-06080615.png", 
+      "particle": "https://www.kfcpakistan.com/images/06430420-324a-11f1-88bb-754581c69783-ValueBucketcopy-2026-04-07062133.png", 
       "desc": "Classic fried chicken with crispy golden fries.", 
       "bgColor": "#e6e6e6" 
     }
   ],
   "products": [
-    { "id": 1, "title": "Krunch Burger", "price": "590", "image": "/images/zinger-burger.png", "description": "Crispy chicken fillet with fresh lettuce and mayo in a toasted bun.", "category": "Burgers" },
-    { "id": 2, "title": "Mighty Zinger", "price": "770", "image": "/images/chicken-wrap.png", "description": "Double stacked zinger fillet with jalapeños and spicy sauce.", "category": "Burgers" },
-    { "id": 3, "title": "Crispy Strips", "price": "650", "image": "/images/chicken-strips.png", "description": "5 pcs golden crispy strips with fries and signature dips.", "category": "Ala-Carte" },
-    { "id": 4, "title": "Hot Wings", "price": "450", "image": "/images/chicken-wings.png", "description": "6 pcs spicy hot wings with our fiery chili glaze.", "category": "Ala-Carte" },
-    { "id": 5, "title": "Family Feast", "price": "2590", "image": "/images/family-feast.png", "description": "A feast for the family — chicken, burgers, fries and drinks.", "category": "Sharing" },
-    { "id": 6, "title": "Crispy Bucket", "price": "2090", "image": "/images/crispy-bucket.png", "description": "9 pcs of Signature Crispy Fried Chicken, hand-breaded in-house.", "category": "Sharing" },
-    { "id": 7, "title": "Chicken Wrap", "price": "490", "image": "/images/chicken-wrap.png", "description": "Crispy chicken twister with fresh veggies and ranch sauce.", "category": "Wraps" },
-    { "id": 8, "title": "Boneless Strips Meal", "price": "750", "image": "/images/chicken-strips.png", "description": "4 Boneless Strips, Regular Fries, 2 Dips and a drink.", "category": "Combos" }
+    { "id": 1, "title": "Krunch Burger", "price": "590", "image": "https://www.kfcpakistan.com/images/3df28210-0356-11f1-b8c8-9d1458b09f1f-KrunchBurger_variant_0-2026-02-06122036.png", "description": "Crispy chicken fillet with fresh lettuce and mayo in a toasted bun.", "category": "Burgers" },
+    { "id": 2, "title": "Mighty Zinger", "price": "770", "image": "https://www.kfcpakistan.com/images/479d9a50-033f-11f1-80f2-d9425fcae453-MightyBurger_variant_0-2026-02-06093614.png", "description": "Double stacked zinger fillet with jalapeños and spicy sauce.", "category": "Burgers" },
+    { "id": 3, "title": "Crispy Strips", "price": "650", "image": "https://www.kfcpakistan.com/images/edb71140-7505-11f1-ba67-35228a262a5e-WebThumbnail-Copy-2026-07-01043254.png", "description": "5 pcs golden crispy strips with fries and signature dips.", "category": "Ala-Carte" },
+    { "id": 4, "title": "Hot Wings", "price": "450", "image": "https://www.kfcpakistan.com/images/3ae70cb0-0c9f-11f1-94b0-4f40f45967a3-SalsaSprinkleWings2_variant_0-2026-02-18075545.png", "description": "6 pcs spicy hot wings with our fiery chili glaze.", "category": "Ala-Carte" },
+    { "id": 5, "title": "Family Feast", "price": "2590", "image": "https://www.kfcpakistan.com/images/59a25580-317d-11f1-b9d7-df6491e01d33-FF1-With-bottle-copy-2026-04-06055626.png", "description": "A feast for the family — chicken, burgers, fries and drinks.", "category": "Sharing" },
+    { "id": 6, "title": "Crispy Bucket", "price": "2090", "image": "https://www.kfcpakistan.com/images/06430420-324a-11f1-88bb-754581c69783-ValueBucketcopy-2026-04-07062133.png", "description": "9 pcs of Signature Crispy Fried Chicken, hand-breaded in-house.", "category": "Sharing" },
+    { "id": 7, "title": "Chicken Wrap", "price": "490", "image": "https://www.kfcpakistan.com/images/c3aa7330-032f-11f1-a75a-71c2b2274186-Twister_variant_0-2026-02-06074510.png", "description": "Crispy chicken twister with fresh veggies and ranch sauce.", "category": "Wraps" },
+    { "id": 8, "title": "Boneless Strips Meal", "price": "750", "image": "https://www.kfcpakistan.com/images/b5d1f500-0332-11f1-be61-8b04dd48299d-3pcBonelessStrips_variant_0-2026-02-06080615.png", "description": "4 Boneless Strips, Regular Fries, 2 Dips and a drink.", "category": "Combos" }
   ],
   "topDeals": [
     {
@@ -60,38 +60,38 @@
       "title": "Crispy Bucket",
       "description": "Enjoy 9 pcs of our Signature Crispy Fried Chicken, hand-breaded in-house daily.",
       "price": "2090",
-      "image": "/images/crispy-bucket.png"
+      "image": "https://www.kfcpakistan.com/images/06430420-324a-11f1-88bb-754581c69783-ValueBucketcopy-2026-04-07062133.png"
     },
     {
       "id": 2,
       "title": "Family Feast",
       "description": "An ultimate meal for the fam. It includes burgers, chicken, fries & drinks.",
       "price": "2590",
-      "image": "/images/family-feast.png"
+      "image": "https://www.kfcpakistan.com/images/c3a961c0-032f-11f1-abc7-cdf759166736-XtremeDuoBox-2026-02-06074510.png"
     },
     {
       "id": 3,
       "title": "Strips & Dips",
       "description": "4 Boneless Strips, Regular Fries, 2 Dips (Ranch & Smoky) and a drink.",
       "price": "750",
-      "image": "/images/chicken-strips.png"
+      "image": "https://www.kfcpakistan.com/images/479de870-033f-11f1-a164-99d3a0802c4a-WowBox(2)-2026-02-06093614.png"
     },
     {
       "id": 4,
       "title": "Zinger Duo Box",
       "description": "The irresistible combo of 2 Signature Zingers + 2 pcs Hot Wings & Fries.",
       "price": "1560",
-      "image": "/images/zinger-burger.png"
+      "image": "https://www.kfcpakistan.com/images/c3a961c0-032f-11f1-abc7-cdf759166736-XtremeDuoBox-2026-02-06074510.png"
     }
   ],
   "exploreMenu": [
-    { "name": "Promotion", "image": "/images/family-feast.png" },
-    { "name": "Everyday Value", "image": "/images/zinger-burger.png" },
-    { "name": "Ala-Carte & Combos", "image": "/images/chicken-strips.png" },
-    { "name": "Signature Boxes", "image": "/images/crispy-bucket.png" },
-    { "name": "Sharing", "image": "/images/family-feast.png" },
-    { "name": "Wraps", "image": "/images/chicken-wrap.png" },
-    { "name": "Wings", "image": "/images/chicken-wings.png" }
+    { "name": "Promotion", "image": "https://www.kfcpakistan.com/images/59a25580-317d-11f1-b9d7-df6491e01d33-FF1-With-bottle-copy-2026-04-06055626.png" },
+    { "name": "Everyday Value", "image": "https://www.kfcpakistan.com/images/06430420-324a-11f1-88bb-754581c69783-ValueBucketcopy-2026-04-07062133.png" },
+    { "name": "Ala-Carte & Combos", "image": "https://www.kfcpakistan.com/images/479de870-033f-11f1-a164-99d3a0802c4a-WowBox(2)-2026-02-06093614.png" },
+    { "name": "Signature Boxes", "image": "https://www.kfcpakistan.com/images/479de870-033f-11f1-a164-99d3a0802c4a-WowBox(2)-2026-02-06093614.png" },
+    { "name": "Sharing", "image": "https://www.kfcpakistan.com/images/59a25580-317d-11f1-b9d7-df6491e01d33-FF1-With-bottle-copy-2026-04-06055626.png" },
+    { "name": "Wraps", "image": "https://www.kfcpakistan.com/images/c3aa7330-032f-11f1-a75a-71c2b2274186-Twister_variant_0-2026-02-06074510.png" },
+    { "name": "Wings", "image": "https://www.kfcpakistan.com/images/3ae70cb0-0c9f-11f1-94b0-4f40f45967a3-SalsaSprinkleWings2_variant_0-2026-02-18075545.png" }
   ],
   "footer": {
     "description": "At ABC Restaurant, we serve only the crispiest, juiciest fried chicken made from our secret recipe. Every bite is a crunch of perfection, seasoned with love and spices from around the world.",

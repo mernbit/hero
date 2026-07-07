@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useTenant } from "../context/TenantContext";
+import { useCart } from "../context/CartContext";
 
 const TopDeals = () => {
   const tenant = useTenant();
+  const { openModal } = useCart();
   const deals = tenant.topDeals;
   const [wishlist, setWishlist] = useState({});
 
@@ -29,7 +31,8 @@ const TopDeals = () => {
           {deals.map((deal) => (
             <div
               key={deal.id}
-              className="relative bg-white rounded-xl overflow-visible group flex flex-col"
+              onClick={() => openModal(deal)}
+              className="relative bg-white rounded-xl overflow-visible group flex flex-col cursor-pointer"
               style={{
                 boxShadow: "0 4px 15px rgba(0,0,0,0.03)",
                 border: "1px solid rgba(0,0,0,0.06)"
@@ -87,6 +90,7 @@ const TopDeals = () => {
 
               {/* Overlapping Button */}
               <button
+                onClick={(e) => { e.stopPropagation(); openModal(deal); }}
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-accent text-white py-[8px] px-5 rounded-[6px] font-bold text-[12px] cursor-pointer whitespace-nowrap tracking-wider hover:brightness-90 transition-all border-none"
               >
                 + ADD TO BUCKET

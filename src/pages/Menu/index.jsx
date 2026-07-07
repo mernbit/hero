@@ -1,7 +1,10 @@
 import React from "react";
 import { useTenant } from "../../context/TenantContext";
+import { useCart } from "../../context/CartContext";
+
 const Menu = () => {
   const tenant = useTenant();
+  const { openModal } = useCart();
   const menuItems = tenant.products;
 
   return (
@@ -18,7 +21,8 @@ const Menu = () => {
           {menuItems.map((item) => (
             <div
               key={item.id}
-              className="relative bg-white pt-[50px] pb-6 flex flex-col group shadow-sm hover:shadow-2xl transition-all duration-300"
+              onClick={() => openModal(item)}
+              className="relative bg-white pt-[50px] pb-6 flex flex-col group shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer"
             >
               {/* Three Top Rectangles */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-[8px]">

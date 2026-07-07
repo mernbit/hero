@@ -9,12 +9,18 @@ import {
 } from "react-router-dom";
 import Restaurant from "./pages/Restaurant";
 import ExploreMenuPage from "./pages/ExploreMenuPage";
+import CartPage from "./pages/CartPage";
 import { TenantProvider } from "./context/TenantContext";
+import { CartProvider } from "./context/CartContext";
 
 // Wrapper to provide TenantContext for standalone pages
 const TenantPageWrapper = ({ children }) => {
   const { slug } = useParams();
-  return <TenantProvider slug={slug}>{children}</TenantProvider>;
+  return (
+    <TenantProvider slug={slug}>
+      <CartProvider>{children}</CartProvider>
+    </TenantProvider>
+  );
 };
 
 const App = () => {
@@ -27,6 +33,14 @@ const App = () => {
           element={
             <TenantPageWrapper>
               <ExploreMenuPage />
+            </TenantPageWrapper>
+          }
+        />
+        <Route
+          path="/:slug/cart"
+          element={
+            <TenantPageWrapper>
+              <CartPage />
             </TenantPageWrapper>
           }
         />

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useTenant } from '../context/TenantContext';
+import { useCart } from '../context/CartContext';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ isStatic = false }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const tenant = useTenant();
+    const { itemCount } = useCart();
 
     return (
         <div className={isStatic ? 'w-full relative z-50' : 'fixed top-3 left-4 right-4 lg:left-5 lg:right-5 z-[9999]'}>
@@ -43,8 +46,21 @@ const Navbar = ({ isStatic = false }) => {
                     </svg>
                 </button>
 
-                {/* empty right placeholder to balance flex */}
-                <div className="hidden lg:block" style={{ width: 160 }} />
+                {/* Right side controls */}
+                <div className="hidden lg:flex items-center gap-3 w-[160px] justify-end">
+                    <Link to={`/${tenant?.id}/cart`} className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/20 border border-white backdrop-blur-sm hover:bg-white/40 transition-colors">
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-accent" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        {itemCount > 0 && (
+                            <span className="absolute -top-1 -right-1 bg-accent text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md animate-[scaleUp_0.2s_ease-out]">
+                                {itemCount}
+                            </span>
+                        )}
+                    </Link>
+                </div>
             </header>
 
             {/* Mobile Menu Dropdown */}
