@@ -25,6 +25,7 @@ const getRevealScale = () => {
   return Math.ceil(diagonal / 60) + 2;
 };
 
+let heroIntroPlayed = false;
 const Hero = () => {
   const tenant = useTenant();
   const flavors = tenant.flavors;
@@ -107,10 +108,53 @@ const Hero = () => {
       );
     });
   };
+  const setParticlesFinalState = () => {
+    const positions = [
+      {
+        x: () => gsap.utils.random(-260, -220),
+        y: () => gsap.utils.random(-260, -220),
+      },
+      {
+        x: () => gsap.utils.random(220, 260),
+        y: () => gsap.utils.random(-260, -220),
+      },
+      {
+        x: () => gsap.utils.random(-260, -220),
+        y: () => gsap.utils.random(-50, 50),
+      },
+      {
+        x: () => gsap.utils.random(180, 260),
+        y: () => gsap.utils.random(-50, 50),
+      },
+      {
+        x: () => gsap.utils.random(-220, -180),
+        y: () => gsap.utils.random(180, 220),
+      },
+      {
+        x: () => gsap.utils.random(160, 200),
+        y: () => gsap.utils.random(180, 220),
+      },
+      {
+        x: () => gsap.utils.random(-50, 50),
+        y: () => gsap.utils.random(-260, -220),
+      },
+    ];
+    particleRefs.current.forEach((particle, i) => {
+      const pos = positions[i];
 
-  const tl = gsap.timeline();
+      gsap.set(particle, {
+        x: pos.x(),
+        y: pos.y(),
+        opacity: 1,
+        scale: 1,
+      });
+    });
+  };
+  const playIntro = () => {
+    const tl = gsap.timeline();
 
-  const { contextSafe } = useGSAP(() => {
+    // animations
+
     tl.from(
       "#img",
       {
@@ -187,8 +231,17 @@ const Hero = () => {
     // tl.addLabel("particlesScatter", 5.5);
     tl.addLabel("particlesScatter");
     scatterParticles(particleRefs.current, tl, "particlesScatter");
-  });
+  };
 
+  const { contextSafe } = useGSAP(() => {
+    if (heroIntroPlayed) {
+      setParticlesFinalState();
+      return;
+    }
+
+    heroIntroPlayed = true;
+    playIntro();
+  });
   const handleFlavorClick = contextSafe((flavor) => {
     if (flavor.name === activeFlavor.name || isAnimating.current) return;
     isAnimating.current = true;
