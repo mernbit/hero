@@ -45,32 +45,32 @@ const Hero = () => {
     // 7 positions: TL, TR, L, R, BL, BR, TC
     const positions = [
       {
-        x: () => gsap.utils.random(-160, -100),
-        y: () => gsap.utils.random(-220, -140),
+        x: () => gsap.utils.random(-260, -220),
+        y: () => gsap.utils.random(-260, -220),
       },
       {
-        x: () => gsap.utils.random(100, 160),
-        y: () => gsap.utils.random(-220, -140),
+        x: () => gsap.utils.random(220, 260),
+        y: () => gsap.utils.random(-260, -220),
       },
       {
-        x: () => gsap.utils.random(-220, -160),
+        x: () => gsap.utils.random(-260, -220),
         y: () => gsap.utils.random(-50, 50),
       },
       {
-        x: () => gsap.utils.random(160, 220),
+        x: () => gsap.utils.random(180, 260),
         y: () => gsap.utils.random(-50, 50),
       },
       {
-        x: () => gsap.utils.random(-180, -120),
-        y: () => gsap.utils.random(140, 220),
+        x: () => gsap.utils.random(-220, -180),
+        y: () => gsap.utils.random(180, 220),
       },
       {
-        x: () => gsap.utils.random(120, 180),
-        y: () => gsap.utils.random(140, 220),
+        x: () => gsap.utils.random(160, 200),
+        y: () => gsap.utils.random(180, 220),
       },
       {
         x: () => gsap.utils.random(-50, 50),
-        y: () => gsap.utils.random(-260, -180),
+        y: () => gsap.utils.random(-260, -220),
       },
     ];
 
@@ -117,61 +117,75 @@ const Hero = () => {
         y: 500,
         // opacity: 0,
         duration: 0.6,
-        delay: 1,
+        // delay: 1,
         scale: 0.9,
       },
       1,
     )
-      .to("#img img", {
-        rotateZ: -10,
-        delay: 1,
-        duration: 1,
-        ease: "power2",
-      })
-      .from(
-        "header",
+      .addLabel("rotate", "+=1")
+      .to(
+        "#img img",
         {
-          y: -50,
-          opacity: 0,
-          duration: 0.5,
+          rotateZ: -10,
+          //   delay: 0.5,
+          duration: 1,
           ease: "power2.out",
+          // ease: "power2",
         },
-        6.5,
+        "rotate",
       )
       .from(
         "#hero #left",
         {
-          x: -50,
-          opacity: 0,
+          x: -550,
+          //   opacity: 0,
           duration: 0.4,
           ease: "back.out(1.5)",
         },
-        5.5,
+        // 5.5,
+        "rotate+=0.3",
       )
       .from(
         "#stats",
         {
-          x: 50,
-          opacity: 0,
+          x: 500,
+          //   opacity: 0,
           duration: 0.4,
           ease: "back.out(1.5)",
         },
-        5.5,
+        // 5.5,
+        "<",
       )
       .fromTo(
         "#flavors div",
-        { x: 50, opacity: 0 },
+        {
+          x: 500,
+          // opacity: 0
+        },
         {
           x: 0,
           opacity: 1,
-          ease: "back.out(1.5)",
-          stagger: 0.05,
-          duration: 0.3,
+          //   ease: "back.out(1.5)",
+          stagger: 0.2,
+          duration: 0.4,
         },
-        5.5,
+        // 5.5,
+        "<",
+      )
+      .from(
+        "header",
+        {
+          y: -100,
+          //   opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "rotate+=1.3",
+        // 6.5,
       );
 
-    tl.addLabel("particlesScatter", 5.5);
+    // tl.addLabel("particlesScatter", 5.5);
+    tl.addLabel("particlesScatter");
     scatterParticles(particleRefs.current, tl, "particlesScatter");
   });
 
@@ -222,8 +236,8 @@ const Hero = () => {
     master.to(
       img,
       {
-        y: -150,
-        opacity: 0,
+        y: -700,
+        // opacity: 0,
         duration: 0.6,
         ease: "power2.inOut",
       },
