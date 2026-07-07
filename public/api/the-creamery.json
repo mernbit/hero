@@ -53,10 +53,40 @@
     }
   ],
   "products": [
-    { "id": 1, "title": "Vanilla Bliss", "price": "310", "image": "/images/vanilla-cone.png" },
-    { "id": 2, "title": "Choco Delight", "price": "770", "image": "/images/chocolate-cone.png" },
-    { "id": 3, "title": "Berry Blast", "price": "650", "image": "/images/blueberry-cone.png" },
-    { "id": 4, "title": "Raspberry Swirl", "price": "450", "image": "/images/raspberry-cone.png" }
+    { "id": 1, "title": "Vanilla Bliss", "price": "310", "image": "/images/vanilla-cone.png", "description": "Classic, creamy, and smooth vanilla bean perfection.", "category": "Cones" },
+    { "id": 2, "title": "Choco Delight", "price": "770", "image": "/images/chocolate-cone.png", "description": "Rich, luxurious chocolate fudge delight.", "category": "Cones" },
+    { "id": 3, "title": "Berry Blast", "price": "650", "image": "/images/blueberry-cone.png", "description": "Sweet, juicy, and refreshingly tangy blueberry.", "category": "Cones" },
+    { "id": 4, "title": "Raspberry Swirl", "price": "450", "image": "/images/raspberry-cone.png", "description": "Tart and sweet raspberry swirl, perfectly refreshing.", "category": "Scoops" }
+  ],
+  "topDeals": [
+    {
+      "id": 1,
+      "title": "Vanilla Bliss",
+      "description": "Our classic, best-selling creamy vanilla bean cone — perfection in every lick.",
+      "price": "310",
+      "image": "/images/vanilla-cone.png"
+    },
+    {
+      "id": 2,
+      "title": "Choco Delight",
+      "description": "Rich Belgian chocolate fudge swirled into a crispy waffle cone.",
+      "price": "770",
+      "image": "/images/chocolate-cone.png"
+    },
+    {
+      "id": 3,
+      "title": "Berry Blast",
+      "description": "Fresh blueberry burst with a tangy twist — summer's favorite flavor.",
+      "price": "650",
+      "image": "/images/blueberry-cone.png"
+    },
+    {
+      "id": 4,
+      "title": "Raspberry Swirl",
+      "description": "The perfect blend of tart raspberry and creamy vanilla swirl.",
+      "price": "450",
+      "image": "/images/raspberry-cone.png"
+    }
   ],
   "exploreMenu": [
     { "name": "Cones", "image": "/images/vanilla-cone.png" },
@@ -76,6 +106,6 @@
       "instagram": "https://instagram.com/thecreamery"
     },
     "links": ["Privacy Policy", "FAQs"],
-    "poweredBy": "Indolj"
+    "poweredBy": "Hashir"
   }
 }

@@ -21,40 +21,77 @@
   "flavors": [
     { 
       "name": "Krunch Burger", 
-      "img": "/images/vanilla-thumb.png", 
-      "cone": "/images/vanilla-cone.png", 
-      "particle": "/images/vanilla.png", 
+      "img": "/images/zinger-burger.png", 
+      "cone": "/images/zinger-burger.png", 
+      "particle": "/images/chicken-wings.png", 
       "desc": "Crispy fried chicken with signature spicy sauce.", 
       "bgColor": "#ffcccc" 
     },
     { 
       "name": "Mighty Zinger", 
-      "img": "/images/chocolate-thumb.png", 
-      "cone": "/images/chocolate-cone.png", 
-      "particle": "/images/chocolate.png", 
+      "img": "/images/chicken-wrap.png", 
+      "cone": "/images/chicken-wrap.png", 
+      "particle": "/images/chicken-strips.png", 
       "desc": "Double decker zinger fillet for the mighty appetite.", 
       "bgColor": "#ffe6cc" 
     },
     { 
       "name": "Chicken & Chips", 
-      "img": "/images/blueberry-thumb.png", 
-      "cone": "/images/blueberry-cone.png", 
-      "particle": "/images/blueberry.png", 
+      "img": "/images/chicken-strips.png", 
+      "cone": "/images/chicken-strips.png", 
+      "particle": "/images/crispy-bucket.png", 
       "desc": "Classic fried chicken with crispy golden fries.", 
       "bgColor": "#e6e6e6" 
     }
   ],
   "products": [
-    { "id": 1, "title": "Krunch Burger", "price": "310", "image": "/images/vanilla-cone.png" },
-    { "id": 2, "title": "Mighty Zinger", "price": "770", "image": "/images/chocolate-cone.png" },
-    { "id": 3, "title": "Chicken & Chips", "price": "650", "image": "/images/blueberry-cone.png" }
+    { "id": 1, "title": "Krunch Burger", "price": "590", "image": "/images/zinger-burger.png", "description": "Crispy chicken fillet with fresh lettuce and mayo in a toasted bun.", "category": "Burgers" },
+    { "id": 2, "title": "Mighty Zinger", "price": "770", "image": "/images/chicken-wrap.png", "description": "Double stacked zinger fillet with jalapeños and spicy sauce.", "category": "Burgers" },
+    { "id": 3, "title": "Crispy Strips", "price": "650", "image": "/images/chicken-strips.png", "description": "5 pcs golden crispy strips with fries and signature dips.", "category": "Ala-Carte" },
+    { "id": 4, "title": "Hot Wings", "price": "450", "image": "/images/chicken-wings.png", "description": "6 pcs spicy hot wings with our fiery chili glaze.", "category": "Ala-Carte" },
+    { "id": 5, "title": "Family Feast", "price": "2590", "image": "/images/family-feast.png", "description": "A feast for the family — chicken, burgers, fries and drinks.", "category": "Sharing" },
+    { "id": 6, "title": "Crispy Bucket", "price": "2090", "image": "/images/crispy-bucket.png", "description": "9 pcs of Signature Crispy Fried Chicken, hand-breaded in-house.", "category": "Sharing" },
+    { "id": 7, "title": "Chicken Wrap", "price": "490", "image": "/images/chicken-wrap.png", "description": "Crispy chicken twister with fresh veggies and ranch sauce.", "category": "Wraps" },
+    { "id": 8, "title": "Boneless Strips Meal", "price": "750", "image": "/images/chicken-strips.png", "description": "4 Boneless Strips, Regular Fries, 2 Dips and a drink.", "category": "Combos" }
+  ],
+  "topDeals": [
+    {
+      "id": 1,
+      "title": "Crispy Bucket",
+      "description": "Enjoy 9 pcs of our Signature Crispy Fried Chicken, hand-breaded in-house daily.",
+      "price": "2090",
+      "image": "/images/crispy-bucket.png"
+    },
+    {
+      "id": 2,
+      "title": "Family Feast",
+      "description": "An ultimate meal for the fam. It includes burgers, chicken, fries & drinks.",
+      "price": "2590",
+      "image": "/images/family-feast.png"
+    },
+    {
+      "id": 3,
+      "title": "Strips & Dips",
+      "description": "4 Boneless Strips, Regular Fries, 2 Dips (Ranch & Smoky) and a drink.",
+      "price": "750",
+      "image": "/images/chicken-strips.png"
+    },
+    {
+      "id": 4,
+      "title": "Zinger Duo Box",
+      "description": "The irresistible combo of 2 Signature Zingers + 2 pcs Hot Wings & Fries.",
+      "price": "1560",
+      "image": "/images/zinger-burger.png"
+    }
   ],
   "exploreMenu": [
-    { "name": "Promotion", "image": "/images/vanilla-cone.png" },
-    { "name": "Everyday Value", "image": "/images/chocolate-cone.png" },
-    { "name": "Ala-Carte & Combos", "image": "/images/blueberry-cone.png" },
-    { "name": "Signature Boxes", "image": "/images/raspberry-cone.png" },
-    { "name": "Sharing", "image": "/images/vanilla-cone.png" }
+    { "name": "Promotion", "image": "/images/family-feast.png" },
+    { "name": "Everyday Value", "image": "/images/zinger-burger.png" },
+    { "name": "Ala-Carte & Combos", "image": "/images/chicken-strips.png" },
+    { "name": "Signature Boxes", "image": "/images/crispy-bucket.png" },
+    { "name": "Sharing", "image": "/images/family-feast.png" },
+    { "name": "Wraps", "image": "/images/chicken-wrap.png" },
+    { "name": "Wings", "image": "/images/chicken-wings.png" }
   ],
   "footer": {
     "description": "At ABC Restaurant, we serve only the crispiest, juiciest fried chicken made from our secret recipe. Every bite is a crunch of perfection, seasoned with love and spices from around the world.",
@@ -66,6 +103,6 @@
       "instagram": "https://instagram.com/abcresturant"
     },
     "links": ["Privacy Policy", "FAQs"],
-    "poweredBy": "Indolj"
+    "poweredBy": "Hashir"
   }
 }

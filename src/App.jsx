@@ -5,14 +5,31 @@ import {
   Routes,
   Route,
   Navigate,
+  useParams,
 } from "react-router-dom";
 import Restaurant from "./pages/Restaurant";
+import ExploreMenuPage from "./pages/ExploreMenuPage";
+import { TenantProvider } from "./context/TenantContext";
+
+// Wrapper to provide TenantContext for standalone pages
+const TenantPageWrapper = ({ children }) => {
+  const { slug } = useParams();
+  return <TenantProvider slug={slug}>{children}</TenantProvider>;
+};
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/:slug" element={<Restaurant />} />
+        <Route
+          path="/:slug/menu"
+          element={
+            <TenantPageWrapper>
+              <ExploreMenuPage />
+            </TenantPageWrapper>
+          }
+        />
         <Route path="*" element={<Navigate to="/the-creamery" replace />} />
       </Routes>
     </Router>

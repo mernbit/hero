@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const TenantContext = createContext();
 
@@ -51,12 +52,8 @@ export const TenantProvider = ({ children, slug }) => {
     }
     
     if (error) {
-        return (
-            <div className="min-h-screen w-full flex flex-col items-center justify-center font-bold text-red-500 text-2xl bg-[#f2f4f7]">
-                <p>Error: {error}</p>
-                <p className="text-sm font-normal text-gray-600 mt-4">Try /the-creamery or /abc-resturant</p>
-            </div>
-        );
+        const isMenuRoute = window.location.pathname.endsWith('/menu');
+        return <Navigate to={isMenuRoute ? "/the-creamery/menu" : "/the-creamery"} replace />;
     }
 
     return (

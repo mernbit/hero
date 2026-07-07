@@ -5,6 +5,7 @@ import Hero from "../Hero";
 import Menu from "../Menu";
 import Footer from "../../components/Footer";
 import ExploreMenu from "../../components/ExploreMenu";
+import TopDeals from "../../components/TopDeals";
 
 const Restaurant = () => {
   // Extract the slug from the URL e.g. /the-creamery or /abc-resturant
@@ -16,6 +17,7 @@ const Restaurant = () => {
         <Hero />
         <ExploreMenu />
         <Menu />
+        <TopDeals />
         <Footer />
       </div>
     </TenantProvider>

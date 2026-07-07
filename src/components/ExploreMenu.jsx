@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import { useTenant } from "../context/TenantContext";
+import { Link, useParams } from "react-router-dom";
 
 const ExploreMenu = () => {
   const tenant = useTenant();
+  const { slug } = useParams();
   const categories = tenant.exploreMenu;
   const scrollRef = useRef(null);
 
@@ -27,12 +29,12 @@ const ExploreMenu = () => {
             </h2>
             <div className="w-[60px] h-[4px] bg-accent mt-2 rounded-full"></div>
           </div>
-          <a
-            href="#"
+          <Link
+            to={`/${slug}/menu`}
             className="text-[14px] font-bold text-text-main uppercase underline underline-offset-4 tracking-wide hover:text-accent transition-colors mt-2"
           >
             View All
-          </a>
+          </Link>
         </div>
 
         {/* Carousel Wrapper */}

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useTenant } from '../context/TenantContext';
 
-const Navbar = () => {
+const Navbar = ({ isStatic = false }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const tenant = useTenant();
 
     return (
-        <div className='fixed top-3 left-4 right-4 lg:left-5 lg:right-5 z-9999'>
+        <div className={isStatic ? 'w-full relative z-50' : 'fixed top-3 left-4 right-4 lg:left-5 lg:right-5 z-[9999]'}>
             <header className="flex items-center justify-between pb-6">
                 <div className="flex items-center gap-2.5">
                     <div className="w-11 h-11 rounded-full bg-accent flex items-center justify-center shrink-0">
