@@ -1,5 +1,5 @@
 {
-  "id": "abc-resturant",
+  "id": "abc-restaurant",
   "name": "ABC Restaurant",
   "since": "Since 1952",
   "theme": {
@@ -44,7 +44,7 @@
       "cone": "https://www.kfcpakistan.com/images/3df28210-0356-11f1-b8c8-9d1458b09f1f-KrunchBurger_variant_0-2026-02-06122036.png", 
       "particle": "https://www.kfcpakistan.com/images/3ae70cb0-0c9f-11f1-94b0-4f40f45967a3-SalsaSprinkleWings2_variant_0-2026-02-18075545.png", 
       "desc": "Crispy fried chicken with signature spicy sauce.", 
-      "bgColor": "#ffcccc" 
+      "bgColor": "#fbc02d" 
     },
     { 
       "name": "Mighty Zinger", 
@@ -52,7 +52,7 @@
       "cone": "https://www.kfcpakistan.com/images/479d9a50-033f-11f1-80f2-d9425fcae453-MightyBurger_variant_0-2026-02-06093614.png", 
       "particle": "https://www.kfcpakistan.com/images/75013930-3246-11f1-883b-8deeef355a97-3pcschicken2_variant_0-2026-04-07055601.png", 
       "desc": "Double decker zinger fillet for the mighty appetite.", 
-      "bgColor": "#ffe6cc" 
+      "bgColor": "#ff9800" 
     },
     { 
       "name": "Chicken & Chips", 
@@ -60,7 +60,7 @@
       "cone": "https://www.kfcpakistan.com/images/06430420-324a-11f1-853e-eb241d5d866b-Chicken&Chips_variant_0-2026-04-07062133.png", 
       "particle": "https://www.kfcpakistan.com/images/06430420-324a-11f1-88bb-754581c69783-ValueBucketcopy-2026-04-07062133.png", 
       "desc": "Classic fried chicken with crispy golden fries.", 
-      "bgColor": "#e6e6e6" 
+      "bgColor": "#b0b0b0" 
     }
   ],
   "products": [
@@ -188,7 +188,7 @@
       "facebook": "https://facebook.com/abcresturant",
       "instagram": "https://instagram.com/abcresturant"
     },
-    "links": ["Privacy Policy", "FAQs"],
+    "links": ["Privacy Policy", "FAQs", "Terms of Service", "Shipping & Returns", "Careers", "About Us", "Contact Us", "Our Partners"],
     "poweredBy": "Hashir"
   }
 }

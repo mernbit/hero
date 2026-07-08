@@ -14,7 +14,7 @@ import AboutUs from "../../components/AboutUs";
 import LocationHours from "../../components/LocationHours";
 
 const Restaurant = () => {
-  // Extract the slug from the URL e.g. /the-creamery or /abc-resturant
+  // Extract the slug from the URL e.g. /the-creamery or /abc-restaurant
   const { slug } = useParams();
 
   return (

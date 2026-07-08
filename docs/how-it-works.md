@@ -20,11 +20,11 @@ They are sharing the same building (our code), but seeing their own furniture (t
 Here is how the different files in our code work together to make this magic happen:
 
 ### 1. `App.jsx` (The Front Door)
-This is the very first place a visitor goes. It acts like a traffic cop. It looks at the website link you typed in (like `/the-creamery` or `/abc-resturant`). It takes that name (called a "slug") and passes it to the next room.
+This is the very first place a visitor goes. It acts like a traffic cop. It looks at the website link you typed in (like `/the-creamery` or `/abc-restaurant`). It takes that name (called a "slug") and passes it to the next room.
 
 ### 2. `TenantContext.jsx` (The Brain)
-This is the most important piece! It takes the name the front door gave it (like "abc-resturant") and runs to the filing cabinet (`public/api/`).
-- It grabs the correct file (`abc-resturant.json`).
+This is the most important piece! It takes the name the front door gave it (like "abc-restaurant") and runs to the filing cabinet (`public/api/`).
+- It grabs the correct file (`abc-restaurant.json`).
 - It reads the file and says: "Aha! This shop wants red paint and burger pictures!"
 - It then magically squirts the new paint colors across the entire website at once using CSS variables. 
 

@@ -18,7 +18,7 @@ const Hero = () => {
   const flavors = tenant.flavors;
   const [activeFlavor, setActiveFlavor] = useState(flavors[0]);
   const heroRef = useRef();
-
+  document.title = tenant.name;
   // Refs for animated elements
   const revealCircleRef = useRef(null);
   const headingRef = useRef(null);
@@ -445,7 +445,7 @@ const Hero = () => {
 
             <div
               id="flavors"
-              className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible w-full lg:w-auto py-2 lg:py-0 gap-3 lg:gap-1.5 lg:mt-auto"
+              className="grid grid-cols-2 lg:flex lg:flex-col overflow-x-hidden lg:overflow-visible w-full lg:w-auto py-2 lg:py-0 gap-3 lg:gap-1.5 lg:mt-auto"
             >
               {flavors.map((f) => {
                 const isActive = f.name === activeFlavor.name;

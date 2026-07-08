@@ -17,22 +17,12 @@ const Navbar = ({ isStatic = false }) => {
       }
     >
       <header className="flex items-center justify-between pb-6">
-        <div className="flex items-center gap-2.5">
-          <div className="w-11 h-11 rounded-full bg-accent flex items-center justify-center shrink-0">
-            <svg viewBox="0 0 40 40" fill="none" className="w-[26px] h-[26px]">
-              <circle cx="20" cy="20" r="16" stroke="#fff" strokeWidth="2" />
-              <path
-                d="M12 20c4-8 12-8 16 0"
-                stroke="#fff"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M12 20c4 8 12 8 16 0"
-                stroke="#fff"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
+        <div className="flex items-center gap-2.5 backdrop-blur-sm bg-white/10 border border-white rounded-full py-0.5 px-3">
+          <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" fill="none" className="w-[26px] h-[26px]" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+              <path d="M7 2v20"></path>
+              <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
             </svg>
           </div>
           <div className="flex flex-col leading-[1.1]">

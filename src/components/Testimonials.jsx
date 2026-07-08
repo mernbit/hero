@@ -15,25 +15,22 @@ const Testimonials = () => {
 
   const contentRef = useRef(null);
   const cardRef = useRef(null);
-  const imageRef = useRef(null);
   const railRef = useRef([]);
   const progressRef = useRef(null);
   const progressTweenRef = useRef(null);
   const transitionTweenRef = useRef(null);
   const prefersReducedMotion = useRef(
     typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
 
   useEffect(() => {
     railRef.current = railRef.current.slice(0, testimonials.length);
   }, [testimonials.length]);
 
-  // Vertical slide: the whole spotlight block exits upward and vanishes
-  // (clipped by the overflow-hidden wrapper), then the new testimonial's
-  // content is dropped in below the fold and animates up into place.
-  // The actual data swap happens mid-timeline via tl.call(), once the old
-  // content has already scrolled out of the clipped area.
+  // Card fades + rises into place; the old card fades + dips out first.
+  // Data swap happens mid-timeline via tl.call(), once the outgoing card
+  // is fully hidden.
   const animateTransition = useCallback((newIndex) => {
     transitionTweenRef.current?.kill();
 
@@ -53,29 +50,34 @@ const Testimonials = () => {
     const tl = gsap.timeline({ onComplete: () => setIsAnimating(false) });
 
     tl.to(content, {
-      y: -500,
-      opacity: 0,
-      duration: 0.45,
+      x: 500,
+      // opacity: 0,
+      duration: 0.35,
       ease: "power2.in",
     })
       .call(() => setCurrentIndex(newIndex))
-      .set(content, { y: 500 })
+      .set(content, { x: -500 })
       .to(content, {
-        y: 0,
+        x: 0,
         opacity: 1,
-        duration: 0.55,
+        duration: 0.5,
         ease: "power3.out",
       });
 
-    // A little extra polish once the block has landed: stars settle in
-    // just after the slide, instead of arriving stiffly with everything else
+    // Stars settle in just after the card lands
     const stars = cardRef.current?.querySelectorAll("[data-star]");
     if (stars?.length) {
       tl.fromTo(
         stars,
         { opacity: 0, scale: 0.4 },
-        { opacity: 1, scale: 1, duration: 0.3, stagger: 0.05, ease: "back.out(2)" },
-        "-=0.2"
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.3,
+          stagger: 0.05,
+          ease: "back.out(2)",
+        },
+        "-=0.2",
       );
     }
 
@@ -88,7 +90,7 @@ const Testimonials = () => {
       setIsAnimating(true);
       animateTransition(newIndex);
     },
-    [currentIndex, isAnimating, animateTransition]
+    [currentIndex, isAnimating, animateTransition],
   );
 
   const nextTestimonial = useCallback(() => {
@@ -96,7 +98,9 @@ const Testimonials = () => {
   }, [currentIndex, testimonials.length, changeTestimonial]);
 
   const prevTestimonial = useCallback(() => {
-    changeTestimonial((currentIndex - 1 + testimonials.length) % testimonials.length);
+    changeTestimonial(
+      (currentIndex - 1 + testimonials.length) % testimonials.length,
+    );
   }, [currentIndex, testimonials.length, changeTestimonial]);
 
   // Keyboard navigation
@@ -155,7 +159,11 @@ const Testimonials = () => {
       className="w-full bg-[var(--color-bg-card)] relative py-16 md:py-24 overflow-hidden"
       aria-label="Customer testimonials"
     >
-      <div className="max-w-[1100px] mx-auto px-4 md:px-12">
+      {/* Ambient background blobs */}
+      <div className="pointer-events-none absolute -top-16 -left-16 w-72 h-72 rounded-full bg-[var(--color-text-light)]/10 blur-2xl" />
+      <div className="pointer-events-none absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[var(--color-text-light)]/10 blur-2xl translate-x-1/4 translate-y-1/4" />
+
+      <div className="max-w-[720px] mx-auto px-4 md:px-6 relative">
         <header className="mb-12 md:mb-16 text-center">
           <p className="text-sm md:text-base text-text-muted uppercase tracking-widest mb-2">
             Come and join
@@ -173,60 +181,45 @@ const Testimonials = () => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Spotlight: photo + overlapping quote card.
-              overflow-hidden here is the clip mask for the vertical slide —
-              contentRef is the block that actually translates up/down;
-              its natural (untransformed) height is what sizes this wrapper,
-              so anything that slides past y:-500 or in from y:500 gets cut off. */}
-          <div className="relative overflow-hidden">
-            <div
-              ref={contentRef}
-              className="flex flex-col md:flex-row items-start"
-            >
-              <div
-                ref={imageRef}
-                className="relative w-full md:w-[42%] aspect-[4/5] md:aspect-auto md:h-[420px] rounded-3xl overflow-hidden shadow-[0_20px_25px_-5px_var(--color-shadow)] flex-shrink-0"
-              >
-                <img
-                  src={currentTestimonial.image}
-                  alt={currentTestimonial.author}
-                  className="w-full h-full object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <p
-                  data-author
-                  className="absolute left-4 bottom-4 text-white font-semibold text-sm md:text-base"
-                >
-                  {currentTestimonial.author}
-                </p>
-              </div>
-
+          {/* Card zone — sized generously so the quote-bubble accents have room to sit outside the card edges */}
+          <div className="relative px-6 pt-6 pb-8 md:px-10 md:pt-10 md:pb-12">
+            <div ref={contentRef}>
               <article
                 ref={cardRef}
-                className="bg-white rounded-3xl p-8 md:p-10 shadow-[0_20px_25px_-5px_var(--color-shadow)] md:-ml-10 md:mt-10 md:w-[58%] z-10"
+                className="relative bg-white rounded-[28px] px-8 py-12 md:px-14 md:py-14 shadow-[0_25px_50px_-12px_var(--color-shadow)] rotate-[-1deg]"
                 aria-live="polite"
               >
-                <div className="bg-[var(--color-secondary-soft)] w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                {/* Big quote bubble, top right */}
+                <div
+                  className="absolute -top-6 -right-5 md:-top-7 md:-right-7 w-16 h-16 md:w-20 md:h-20 bg-accent flex items-center justify-center shadow-lg"
+                  style={{ borderRadius: "50% 50% 4px 50%" }}
+                  aria-hidden="true"
+                >
                   <svg
-                    data-quote-mark
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-8 h-8 text-accent"
-                    aria-hidden="true"
+                    className="w-7 h-7 md:w-9 md:h-9 text-white"
                   >
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
 
+                {/* Small comma bubble, bottom left */}
+                <div
+                  className="absolute -bottom-5 -left-5 md:-bottom-6 md:-left-6 w-10 h-10 md:w-12 md:h-12 bg-accent shadow-md"
+                  style={{ borderRadius: "50% 4px 50% 50%" }}
+                  aria-hidden="true"
+                />
+
                 <blockquote
                   data-quote-text
-                  className="text-lg md:text-xl text-text-main leading-relaxed mb-6 font-medium"
+                  className="text-lg md:text-xl text-text-muted italic text-center leading-relaxed mb-8"
                 >
-                  "{currentTestimonial.text}"
+                  {currentTestimonial.text}
                 </blockquote>
 
                 <div
-                  className="flex gap-1.5"
+                  className="flex gap-1.5 justify-center mb-4"
                   aria-label={`Rating: ${currentTestimonial.rating} out of 5 stars`}
                 >
                   {[...Array(5)].map((_, i) => (
@@ -234,7 +227,9 @@ const Testimonials = () => {
                       key={i}
                       data-star
                       viewBox="0 0 24 24"
-                      fill={i < currentTestimonial.rating ? "currentColor" : "none"}
+                      fill={
+                        i < currentTestimonial.rating ? "currentColor" : "none"
+                      }
                       stroke="currentColor"
                       strokeWidth="2"
                       className="w-5 h-5 text-yellow-400"
@@ -244,75 +239,68 @@ const Testimonials = () => {
                     </svg>
                   ))}
                 </div>
+
+                <p className="text-center text-accent italic font-semibold text-base md:text-lg">
+                  {currentTestimonial.author}
+                  {currentTestimonial.role && (
+                    <span className="block text-sm text-text-muted not-italic font-normal mt-0.5">
+                      {currentTestimonial.role}
+                    </span>
+                  )}
+                </p>
               </article>
             </div>
           </div>
 
           {/* Avatar rail + controls + progress */}
-          <div className="flex items-center gap-4 mt-8 md:mt-10">
+          <div className="flex items-center gap-4 mt-4 md:mt-6">
+            {/* Autoplay progress bar — replaces the dot pagination
             <div
-              className="flex gap-3 overflow-x-auto flex-1 py-2 px-1 scrollbar-hide"
-              role="tablist"
-              aria-label="Choose a testimonial"
+              className="h-[3px] w-full max-w-[400px] mx-auto bg-gray-200 rounded-full mt-4 overflow-hidden"
+              aria-hidden="true"
             >
-              {testimonials.map((testimonial, index) => (
+              <div
+                ref={progressRef}
+                className="h-full bg-accent rounded-full origin-left"
+                style={{ transform: "scaleX(0)" }}
+              />
+            </div> */}
+            <div className="w-full flex justify-center">
+              <div className="flex gap-2  flex-shrink-0">
                 <button
-                  key={testimonial.id || index}
-                  ref={(el) => (railRef.current[index] = el)}
-                  onClick={() => changeTestimonial(index)}
-                  role="tab"
-                  aria-selected={index === currentIndex}
-                  aria-label={`View testimonial from ${testimonial.author}`}
-                  className={`relative flex-shrink-0 rounded-full overflow-hidden transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
-                    index === currentIndex
-                      ? "w-12 h-12 ring-2 ring-accent ring-offset-2"
-                      : "w-9 h-9 opacity-60 hover:opacity-100"
-                  }`}
+                  onClick={prevTestimonial}
+                  disabled={isAnimating}
+                  aria-label="Previous testimonial"
+                  className="w-10 h-10 rounded-full border-2 border-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 >
-                  <img
-                    src={testimonial.image}
-                    alt=""
-                    aria-hidden="true"
-                    className="w-full h-full object-cover"
-                  />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-4 h-4"
+                  >
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
                 </button>
-              ))}
+                <button
+                  onClick={nextTestimonial}
+                  disabled={isAnimating}
+                  aria-label="Next testimonial"
+                  className="w-10 h-10 rounded-full border-2 border-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-4 h-4"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
             </div>
-
-            <div className="flex gap-2 flex-shrink-0">
-              <button
-                onClick={prevTestimonial}
-                disabled={isAnimating}
-                aria-label="Previous testimonial"
-                className="w-10 h-10 rounded-full border-2 border-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-              <button
-                onClick={nextTestimonial}
-                disabled={isAnimating}
-                aria-label="Next testimonial"
-                className="w-10 h-10 rounded-full border-2 border-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Autoplay progress bar — replaces the dot pagination */}
-          <div
-            className="h-[3px] w-full bg-gray-200 rounded-full mt-4 overflow-hidden"
-            aria-hidden="true"
-          >
-            <div
-              ref={progressRef}
-              className="h-full bg-accent rounded-full origin-left"
-              style={{ transform: "scaleX(0)" }}
-            />
           </div>
         </div>
       </div>
