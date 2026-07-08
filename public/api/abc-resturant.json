@@ -108,6 +108,15 @@
     { "image": "https://static.vecteezy.com/system/resources/previews/030/542/776/non_2x/fat-woman-bite-piece-of-pizza-overweight-female-is-eating-fast-foods-asian-girl-is-hungry-photo.JPG", "caption": "Cheers" },
     { "image": "https://plus.unsplash.com/premium_photo-1723734034953-ec42862a84e9?q=80&w=1252&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "caption": "Its time to go all out" }
   ],
+  "bookATable": {
+    "enabled": true,
+    "headline": "HUNGRY? WE ARE READY.",
+    "subtext": "Book a table or order now - your next meal is waiting.",
+    "buttonText": "BOOK A TABLE",
+    "leftImage": "https://www.kfcpakistan.com/images/3df28210-0356-11f1-b8c8-9d1458b09f1f-KrunchBurger_variant_0-2026-02-06122036.png",
+    "rightImage": "https://www.kfcpakistan.com/images/479d9a50-033f-11f1-80f2-d9425fcae453-MightyBurger_variant_0-2026-02-06093614.png",
+    "backgroundColor": "#E4002B"
+  },
   "footer": {
     "description": "At ABC Restaurant, we serve only the crispiest, juiciest fried chicken made from our secret recipe. Every bite is a crunch of perfection, seasoned with love and spices from around the world.",
     "phone": "021-111-222-333",
