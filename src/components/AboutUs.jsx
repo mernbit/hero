@@ -197,6 +197,7 @@ const AboutUs = () => {
 
   return (
     <section
+    id="about"
       ref={sectionRef}
       className="w-full bg-[var(--color-page-bg)] py-24 md:py-32 overflow-hidden"
     >

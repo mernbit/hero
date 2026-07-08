@@ -46,30 +46,30 @@ const Navbar = ({ isStatic = false }) => {
         </div>
 
         <nav className="hidden lg:flex items-center gap-0 bg-white/10 border border-white backdrop-blur-sm rounded-full py-1.5 px-2 shadow-[0_1px_4px_rgba(0,0,0,.06)]">
-          <Link
-            to={`/${tenant?.id}`}
-            className="no-underline text-text-main text-[14px] font-semibold py-2 px-5 rounded-full cursor-pointer bg-black/5"
+          <a
+           href="#home"
+           className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors"
           >
             Home
-          </Link>
-          <Link
-            to={`/${tenant?.id}/menu`}
+          </a>
+          <a
+            href="#explore"
             className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors"
           >
             Products
-          </Link>
+          </a>
           <a
             href="#gallery"
             className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors"
           >
             Gallery
           </a>
-          <Link
-            to={`/${tenant?.id}/about`}
+          <a
+            href="#about"
             className="no-underline text-text-main text-[14px] font-medium py-2 px-5 rounded-full cursor-pointer hover:bg-gray-50 transition-colors"
           >
             About
-          </Link>
+          </a>
         </nav>
 
         {/* Mobile Hamburger */}
@@ -104,7 +104,7 @@ const Navbar = ({ isStatic = false }) => {
         {/* Right side controls */}
         <div className="hidden lg:flex items-center gap-3 w-[160px] justify-end">
           <Link
-            to={`/${tenant?.id}/cart`}
+            href={`/${tenant?.id}/cart`}
             className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/20 border border-white backdrop-blur-sm hover:bg-white/40 transition-colors"
           >
             <svg
@@ -137,29 +137,29 @@ const Navbar = ({ isStatic = false }) => {
             : "opacity-0 scale-y-75 -translate-y-4 pointer-events-none"
         }`}
       >
-        <Link
-          to={`/${tenant?.id}`}
+        <a
+          href="#home"
           className="no-underline text-text-main text-[15px] font-semibold py-3 px-4 rounded-xl cursor-pointer bg-white/50"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           Home
-        </Link>
-        <Link
-          to={`/${tenant?.id}/menu`}
+        </a>
+        <a
+          href="#explore"
           className="no-underline text-text-main text-[15px] font-medium py-3 px-4 rounded-xl cursor-pointer hover:bg-white/50 transition-colors"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           Products
-        </Link>
-        <Link
-          to={`/${tenant?.id}/about`}
+        </a>
+        <a
+          href="#about"
           className="no-underline text-text-main text-[15px] font-medium py-3 px-4 rounded-xl cursor-pointer hover:bg-white/50 transition-colors"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           About
-        </Link>
+        </a>
         <a
-        href="#gallery"
+          href="#gallery"
           className="no-underline text-text-main text-[15px] font-medium py-3 px-4 rounded-xl cursor-pointer hover:bg-white/50 transition-colors"
           onClick={() => setIsMobileMenuOpen(false)}
         >

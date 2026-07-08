@@ -203,7 +203,7 @@ const Testimonials = () => {
 
               <article
                 ref={cardRef}
-                className="bg-[var(--color-bg-card)] rounded-3xl p-8 md:p-10 shadow-[0_20px_25px_-5px_var(--color-shadow)] md:-ml-10 md:mt-10 md:w-[58%] z-10"
+                className="bg-white rounded-3xl p-8 md:p-10 shadow-[0_20px_25px_-5px_var(--color-shadow)] md:-ml-10 md:mt-10 md:w-[58%] z-10"
                 aria-live="polite"
               >
                 <div className="bg-[var(--color-secondary-soft)] w-16 h-16 rounded-full flex items-center justify-center mb-4">

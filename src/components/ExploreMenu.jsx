@@ -19,7 +19,7 @@ const ExploreMenu = () => {
   };
 
   return (
-    <div className="w-full bg-[var(--color-surface-alt)] relative py-16 overflow-hidden">
+    <div id="explore" className="w-full bg-[var(--color-surface-alt)] relative py-16 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         {/* Header Row */}
         <div className="flex items-start justify-between mb-10">

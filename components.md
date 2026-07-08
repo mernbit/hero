@@ -12,8 +12,8 @@ book a table -->
 <!-- Gallary -->
 <!-- Special Offers/ Discounts / Top Deals -->
 <!-- Testimonials -->
-Book a Table
-About Us
+<!-- Book a Table -->
+<!-- About Us -->
 Location + hours
 
 <!-- Footer -->

@@ -1,19 +1,6 @@
 import React, { useRef, useState, useCallback } from "react";
 import { useGSAP } from "@gsap/react";
 
-import blueberryCone from "../../assets/blueberry-cone.png";
-import vanillaCone from "../../assets/vanilla-cone.png";
-import chocolateCone from "../../assets/chocolate-cone.png";
-import raspberryCone from "../../assets/raspberry-cone.png";
-
-import vanillaThumb from "../../assets/vanilla-thumb.png";
-import chocolateThumb from "../../assets/chocolate-thumb.png";
-import blueberryThumb from "../../assets/blueberry-thumb.png";
-import raspberryThumb from "../../assets/raspberry-thumb.png";
-import vanillaParticle from "../../assets/vanilla.png";
-import chocolateParticle from "../../assets/chocolate.png";
-import blueberryParticle from "../../assets/blueberry.png";
-import raspberryParticle from "../../assets/raspberry.png";
 import gsap from "gsap";
 import Navbar from "../../components/Navbar";
 import { useTenant } from "../../context/TenantContext";
@@ -367,6 +354,7 @@ const Hero = () => {
 
   return (
     <div
+      id="home"
       ref={wrapperRef}
       style={{ backgroundColor: activeFlavor.bgColor }}
       className="w-full overflow-x-hidden min-h-screen lg:h-screen"
