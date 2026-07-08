@@ -9,6 +9,9 @@ import ExploreMenu from "../../components/ExploreMenu";
 import TopDeals from "../../components/TopDeals";
 import Gallery from "../../components/Gallery";
 import BookATable from "../../components/BookATable";
+import Testimonials from "../../components/Testimonials";
+import AboutUs from "../../components/AboutUs";
+import LocationHours from "../../components/LocationHours";
 
 const Restaurant = () => {
   // Extract the slug from the URL e.g. /the-creamery or /abc-resturant
@@ -23,7 +26,10 @@ const Restaurant = () => {
           <Menu />
           <Gallery />
           <TopDeals />
+          <Testimonials />
           <BookATable />
+          <AboutUs />
+          <LocationHours />
           <Footer />
         </div>
       </CartProvider>

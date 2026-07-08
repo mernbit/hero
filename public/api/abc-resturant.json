@@ -117,6 +117,52 @@
     "rightImage": "https://www.kfcpakistan.com/images/479d9a50-033f-11f1-80f2-d9425fcae453-MightyBurger_variant_0-2026-02-06093614.png",
     "backgroundColor": "#E4002B"
   },
+  "testimonials": [
+    {
+      "text": "The live grill experience is unbeatable! The flavours, the ambiance, and the hospitality—everything was just perfect. Can't wait to visit again!",
+      "author": "Vimal M.",
+      "rating": 5,
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=60"
+    },
+    {
+      "text": "Best fried chicken I've ever had! The crispy coating and juicy meat are perfection. Family feast is our go-to order.",
+      "author": "Ahmed K.",
+      "rating": 5,
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=60"
+    },
+    {
+      "text": "Amazing food and great service! The zinger burger is legendary. Quick delivery and always fresh. Highly recommended!",
+      "author": "Fatima S.",
+      "rating": 5,
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=60"
+    }
+  ],
+  "about": {
+    "enabled": true,
+    "headline": "About Us",
+    "description": "At ABC Restaurant, we serve only the crispiest, juiciest fried chicken made from our secret recipe. Every bite is a crunch of perfection, seasoned with love and spices from around the world.",
+    "story": "Our journey began in 1952 with a passion for bringing people together through great food. Over the decades, we've perfected our recipes while staying true to our commitment to quality. Our signature crispy chicken is hand-breaded daily using our unique blend of 11 herbs and spices.",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&auto=format&fit=crop&q=60",
+    "stats": [
+      { "value": "15+", "label": "Menu Items" },
+      { "value": "50K+", "label": "Happy Customers" },
+      { "value": "5", "label": "Locations" },
+      { "value": "1952", "label": "Established" }
+    ]
+  },
+  "location": {
+    "enabled": true,
+    "headline": "Location & Hours",
+    "address": "Main Boulevard, Gulshan-e-Iqbal, Karachi",
+    "phone": "021-111-222-333",
+    "email": "info@abcresturant.pk",
+    "hours": [
+      { "day": "Monday - Friday", "time": "10:00 AM - 11:00 PM" },
+      { "day": "Saturday", "time": "10:00 AM - 12:00 AM" },
+      { "day": "Sunday", "time": "11:00 AM - 10:00 PM" }
+    ],
+    "mapEmbed": ""
+  },
   "footer": {
     "description": "At ABC Restaurant, we serve only the crispiest, juiciest fried chicken made from our secret recipe. Every bite is a crunch of perfection, seasoned with love and spices from around the world.",
     "phone": "021-111-222-333",
