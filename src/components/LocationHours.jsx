@@ -19,7 +19,7 @@ const LocationHours = () => {
   } = location;
 
   return (
-    <div className="w-full bg-[#f2f4f7] relative py-20 overflow-hidden">
+    <div className="w-full bg-[var(--color-surface-alt)] relative py-20 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         {/* Header */}
         <div className="mb-12 text-center">
@@ -35,7 +35,7 @@ const LocationHours = () => {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left: Contact Info & Hours */}
           <div className="flex-1 w-full">
-            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg h-full">
+            <div className="bg-[var(--color-surface)] rounded-2xl p-8 md:p-12 shadow-[0_10px_15px_-3px_var(--color-shadow)] h-full">
               {/* Address */}
               {address && (
                 <div className="mb-8">
@@ -87,7 +87,7 @@ const LocationHours = () => {
                   <div className="space-y-2 pl-9">
                     {hours.map((item, index) => (
                       <div key={index} className="flex justify-between text-base">
-                        <span className="text-text-muted">{item.day}</span>
+                        <span className="text-[var(--color-text-light)]">{item.day}</span>
                         <span className="text-text-main font-medium">{item.time}</span>
                       </div>
                     ))}
@@ -100,7 +100,7 @@ const LocationHours = () => {
           {/* Right: Map */}
           {mapEmbed && (
             <div className="flex-1 w-full">
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-[400px]">
+              <div className="bg-[var(--color-surface)] rounded-2xl overflow-hidden shadow-[0_10px_15px_-3px_var(--color-shadow)] h-full min-h-[400px]">
                 <div 
                   className="w-full h-full"
                   dangerouslySetInnerHTML={{ __html: mapEmbed }}

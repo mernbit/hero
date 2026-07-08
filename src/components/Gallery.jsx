@@ -33,12 +33,12 @@ const Gallery = () => {
   };
 
   return (
-    <section className="w-full bg-[#f2f4f7] relative py-16 md:py-24 overflow-hidden">
+    <section className="w-full bg-[var(--color-page-bg)] relative py-16 md:py-24 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         {/* Header */}
         <header className="mb-12 md:mb-16 text-center">
           {/* Pill Badge */}
-          <div className="inline-block bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-block bg-accent text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
             Our Moments
           </div>
           {/* Heading */}
@@ -72,11 +72,11 @@ const Gallery = () => {
                 >
                   {/* Polaroid Card */}
                   <div 
-                    className="bg-white rounded-2xl p-3 shadow-lg"
+                    className="bg-[var(--color-surface)] rounded-2xl p-3 shadow-[0_10px_25px_-5px_var(--color-shadow)]"
                     style={{
                       boxShadow: isHovered 
-                        ? '0 25px 50px -12px rgba(0, 0, 0, 0.25)' 
-                        : '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
+                        ? '0 25px 50px -12px var(--color-shadow)' 
+                        : '0 10px 25px -5px var(--color-shadow)'
                     }}
                   >
                     {/* Image Area - Square 1:1, 150px */}
@@ -125,7 +125,7 @@ const Gallery = () => {
                   onClick={() => setSelectedImage(item.image)}
                 >
                   {/* Polaroid Card */}
-                  <div className="bg-white rounded-2xl p-3 shadow-lg">
+                  <div className="bg-[var(--color-surface)] rounded-2xl p-3 shadow-[0_10px_25px_-5px_var(--color-shadow)]">
                     {/* Image Area - Square 1:1, 150px */}
                     <div 
                       className="relative overflow-hidden rounded-xl mb-3"

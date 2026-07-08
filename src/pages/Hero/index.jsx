@@ -403,7 +403,7 @@ const Hero = () => {
             </p>
             <button
               ref={buttonRef}
-              className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:-translate-y-0.5 transition-all"
+              className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:bg-[var(--color-button-primary-hover)] hover:-translate-y-0.5 transition-all"
             >
               {tenant.hero.buttonText}
             </button>
@@ -448,7 +448,7 @@ const Hero = () => {
                   <div className="bungee-regular font-bold text-[28px] lg:text-[38px] leading-none">
                     {stat.value}
                   </div>
-                  <div className="text-[14px] lg:text-[18px] text-text-muted mt-1">
+                  <div className="text-[14px] lg:text-[18px] text-[var(--color-text-light)] mt-1">
                     {stat.label}
                   </div>
                 </div>
@@ -465,7 +465,7 @@ const Hero = () => {
                   <div
                     key={f.name}
                     onClick={() => handleFlavorClick(f)}
-                    className={`flex items-center gap-[10px] lg:gap-[14px] rounded-full py-2 lg:py-3 pr-6 lg:pr-14 pl-2 min-w-[140px] lg:min-w-[180px] cursor-pointer border-2 transition-all shrink-0 hover:scale-105 ${isActive ? "border-lavender bg-white shadow-md" : "border-transparent bg-bg-card hover:bg-gray-100"}`}
+                    className={`flex items-center gap-[10px] lg:gap-[14px] rounded-full py-2 lg:py-3 pr-6 lg:pr-14 pl-2 min-w-[140px] lg:min-w-[180px] cursor-pointer border-2 transition-all shrink-0 hover:scale-105 ${isActive ? "border-lavender bg-white shadow-md" : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)]"}`}
                   >
                     <img
                       src={f.img}

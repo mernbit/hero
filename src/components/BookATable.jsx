@@ -19,27 +19,36 @@ const BookATable = () => {
   } = bookATable;
 
   return (
-    <div 
-      className="w-full relative py-20 overflow-hidden"
-      style={{ backgroundColor }}
+    <div
+      className="w-full bg-accent relative py-20 overflow-hidden"
     >
       {/* Abstract Background Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/15 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/15 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div>
-        <div className="absolute top-20 left-10 w-32 h-32 bg-white/20 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-white/18 rounded-full blur-xl"></div>
-        <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-white/12 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-56 h-56 bg-white/14 rounded-full blur-2xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-white/8 rounded-full blur-2xl"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-white/15 rounded-full blur-xl"></div>
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-white/12 rounded-full blur-xl"></div>
+        <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-56 h-56 bg-white/8 rounded-full blur-2xl"></div>
         {/* Geometric shapes */}
         <div className="absolute top-10 right-1/3 w-20 h-20 bg-white/12 rotate-45 rounded-lg"></div>
         <div className="absolute bottom-1/4 right-10 w-16 h-16 bg-white/12 rotate-12 rounded-full"></div>
         <div className="absolute top-1/2 right-10 w-24 h-24 bg-white/10 -rotate-12 rounded-lg"></div>
-        <div className="absolute bottom-10 left-1/4 w-12 h-12 bg-white/14 rotate-45 rounded-lg"></div>
+        <div className="absolute bottom-10 left-1/4 w-12 h-12 bg-white/15 rotate-45 rounded-lg"></div>
         {/* Additional mobile-friendly shapes */}
-        <div className="absolute top-1/4 left-1/2 w-16 h-16 bg-white/8 rounded-full blur-lg md:hidden"></div>
-        <div className="absolute bottom-1/4 right-1/2 w-20 h-20 bg-white/8 rounded-full blur-lg md:hidden"></div>
+        <div className="absolute top-1/4 left-1/2 w-16 h-16 bg-white/6 rounded-full blur-lg md:hidden"></div>
+        <div className="absolute bottom-1/4 right-1/2 w-20 h-20 bg-white/6 rounded-full blur-lg md:hidden"></div>
+        {/* Decorative circles */}
+        <div className="absolute top-1/4 left-10 w-8 h-8 border-2 border-white/20 rounded-full"></div>
+        <div className="absolute bottom-1/3 right-20 w-12 h-12 border-2 border-white/15 rounded-full"></div>
+        <div className="absolute top-2/3 left-1/3 w-6 h-6 border-2 border-white/25 rounded-full"></div>
+        {/* Additional decorative elements */}
+        <div className="absolute top-10 left-1/4 w-4 h-4 bg-white/20 rotate-12 rounded-full"></div>
+        <div className="absolute bottom-20 left-1/3 w-6 h-6 bg-white/15 -rotate-6 rounded-full"></div>
+        <div className="absolute top-1/2 right-1/3 w-5 h-5 bg-white/18 rotate-45 rounded-full"></div>
+        <div className="absolute top-3/4 left-20 w-8 h-8 border border-white/10 rotate-30 rounded-lg"></div>
+        <div className="absolute top-1/4 right-1/4 w-6 h-6 border border-white/15 -rotate-15 rounded-full"></div>
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 md:px-12 relative z-10">
@@ -67,8 +76,7 @@ const BookATable = () => {
               {subtext}
             </p>
             <button
-              className="bg-white text-accent font-bold text-xs sm:text-sm md:text-base py-3 md:py-4 px-6 md:px-8 rounded-lg cursor-pointer hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl tracking-wider uppercase"
-              style={{ color: backgroundColor }}
+              className="bg-[var(--color-surface)] text-[var(--color-accent)] font-bold text-xs sm:text-sm md:text-base py-3 md:py-4 px-6 md:px-8 rounded-lg cursor-pointer hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl tracking-wider uppercase"
             >
               {buttonText}
             </button>

@@ -9,9 +9,9 @@ book a table -->
 <!-- Explore Menu -->
 <!-- Best Sellers -->
 
-Gallary
-Special Offers/ Discounts / Top Deals
-Testimonials
+<!-- Gallary -->
+<!-- Special Offers/ Discounts / Top Deals -->
+<!-- Testimonials -->
 Book a Table
 About Us
 Location + hours

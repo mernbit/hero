@@ -6,10 +6,10 @@ const Footer = () => {
   const footer = tenant.footer;
 
   return (
-    <footer className="w-full bg-white">
+    <footer className="w-full bg-[var(--color-surface)]">
       {/* Description Banner */}
       <div className="max-w-[1440px] mx-auto px-4 md:px-12 pt-12 pb-8">
-        <div className="border border-gray-200 rounded-md p-6 md:p-8">
+        <div className="border border-[var(--color-border)] rounded-md p-6 md:p-8">
           <p className="text-[14px] md:text-[15px] leading-[1.8] text-text-muted">
             {footer.description}
           </p>
@@ -119,7 +119,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-200 py-4">
+      <div className="border-t border-[var(--color-border)] py-4">
         <div className="max-w-[1440px] mx-auto px-4 md:px-12 flex items-center justify-center gap-2">
           <span className="text-[13px] text-text-muted">
             © {new Date().getFullYear()} Powered by
