@@ -12,6 +12,7 @@ import ExploreMenuPage from "./pages/ExploreMenuPage";
 import CartPage from "./pages/CartPage";
 import { TenantProvider } from "./context/TenantContext";
 import { CartProvider } from "./context/CartContext";
+import About from "./pages/About";
 
 // Wrapper to provide TenantContext for standalone pages
 const TenantPageWrapper = ({ children }) => {
@@ -44,6 +45,7 @@ const App = () => {
             </TenantPageWrapper>
           }
         />
+        <Route path="/:slug/about" element={<About />} />
         <Route path="*" element={<Navigate to="/the-creamery" replace />} />
       </Routes>
     </Router>

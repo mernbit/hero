@@ -6,6 +6,7 @@ const TopDeals = () => {
   const tenant = useTenant();
   const { openModal } = useCart();
   const deals = tenant.topDeals;
+  const sectionTitle = tenant.topDealsTitle || "TOP DEALS";
   const [wishlist, setWishlist] = useState({});
 
   const toggleWishlist = (id) => {
@@ -18,10 +19,10 @@ const TopDeals = () => {
         {/* Header */}
         <div className="mb-10 flex flex-col items-start">
           <h2 
-            className="font-black text-[26px] md:text-[30px] text-text-main uppercase tracking-tight" 
-            style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "-0.5px" }}
+            className="font-black bungee-regular text-3xl md:text-4xl text-text-main uppercase tracking-tight" 
+            style={{ letterSpacing: "-0.5px" }}
           >
-            TOP DEALS
+            {sectionTitle}
           </h2>
           <div className="w-[35px] h-[3px] bg-accent mt-1.5"></div>
         </div>
@@ -83,8 +84,15 @@ const TopDeals = () => {
                 <p className="text-[13px] text-text-muted leading-[1.4] mb-auto line-clamp-2">
                   {deal.description}
                 </p>
-                <div className="font-black text-[15px] text-text-main mt-4 font-inter tracking-tight">
-                  Rs {deal.price}
+                <div className="mt-4 font-inter tracking-tight">
+                  {deal.originalPrice && (
+                    <div className="text-[13px] text-text-muted line-through decoration-red-500 decoration-2">
+                      Rs {deal.originalPrice}
+                    </div>
+                  )}
+                  <div className="font-black text-[15px] text-text-main">
+                    Rs {deal.price}
+                  </div>
                 </div>
               </div>
 
