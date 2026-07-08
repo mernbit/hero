@@ -28,9 +28,29 @@ export const TenantProvider = ({ children, slug }) => {
                 if (data.theme) {
                     root.style.setProperty('--color-accent', data.theme.accent);
                     root.style.setProperty('--color-lavender', data.theme.lavender);
+                    root.style.setProperty('--color-secondary', data.theme.secondary);
+                    root.style.setProperty('--color-secondary-soft', data.theme.secondarySoft);
+                    root.style.setProperty('--color-highlight', data.theme.highlight);
                     root.style.setProperty('--color-bg-card', data.theme.bgCard);
+                    root.style.setProperty('--color-surface', data.theme.surface);
+                    root.style.setProperty('--color-surface-alt', data.theme.surfaceAlt);
+                    root.style.setProperty('--color-page-bg', data.theme.pageBg);
+                    root.style.setProperty('--color-border', data.theme.border);
+                    root.style.setProperty('--color-border-hover', data.theme.borderHover);
                     root.style.setProperty('--color-text-main', data.theme.textMain);
                     root.style.setProperty('--color-text-muted', data.theme.textMuted);
+                    root.style.setProperty('--color-text-light', data.theme.textLight);
+                    root.style.setProperty('--color-text-inverse', data.theme.textInverse);
+                    root.style.setProperty('--color-success', data.theme.success);
+                    root.style.setProperty('--color-warning', data.theme.warning);
+                    root.style.setProperty('--color-danger', data.theme.danger);
+                    root.style.setProperty('--color-info', data.theme.info);
+                    root.style.setProperty('--color-button-primary-hover', data.theme.buttonPrimaryHover);
+                    root.style.setProperty('--color-button-secondary', data.theme.buttonSecondary);
+                    root.style.setProperty('--color-button-secondary-hover', data.theme.buttonSecondaryHover);
+                    root.style.setProperty('--color-badge', data.theme.badge);
+                    root.style.setProperty('--color-badge-text', data.theme.badgeText);
+                    root.style.setProperty('--color-shadow', data.theme.shadow);
                 }
             } catch (err) {
                 console.error(err);

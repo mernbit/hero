@@ -3,12 +3,31 @@
   "name": "The Creamery",
   "since": "Since 2024",
   "theme": {
-    "accent": "#1a1a2e",
-    "lavender": "#c4a5de",
-    "bgCard": "#f5eef9",
-    "textMain": "#1a1a1a",
+    "accent": "#1A1A2E",
+    "lavender": "#C4A5DE",
+    "secondary": "#F7C9A9",
+    "secondarySoft": "#FDEBDD",
+    "highlight": "#8BC5E8",
+    "bgCard": "#F5EEF9",
+    "surface": "#FFFFFF",
+    "surfaceAlt": "#FAFAFC",
+    "pageBg": "#F2F4F7",
+    "border": "#E5E7EB",
+    "borderHover": "#C4A5DE",
+    "textMain": "#1A1A1A",
     "textMuted": "#555555",
-    "pageBg": "#f2f4f7"
+    "textLight": "#7A7A7A",
+    "textInverse": "#FFFFFF",
+    "success": "#34C759",
+    "warning": "#F5A623",
+    "danger": "#E5484D",
+    "info": "#4A90E2",
+    "buttonPrimaryHover": "#2A2A45",
+    "buttonSecondary": "#F7C9A9",
+    "buttonSecondaryHover": "#F2B98D",
+    "badge": "#FFF2CC",
+    "badgeText": "#7A4B00",
+    "shadow": "rgba(26,26,46,0.08)"
   },
   "hero": {
     "stats": [
@@ -107,9 +126,7 @@
     { "image": "http://static.vecteezy.com/system/resources/previews/024/711/087/large_2x/young-adults-enjoying-ice-cream-at-party-generated-by-ai-free-photo.jpg", "caption": "Fresh raspberry Burst" },
     { "image": "https://plus.unsplash.com/premium_photo-1758362641042-ba47cccebc5d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "caption": "Best times spent with ice cream" },
     { "image": "https://plus.unsplash.com/premium_photo-1723600966012-b5c8d7af7b5b?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI0fHx8ZW58MHx8fHx8", "caption": "Children happy with ice cream" },
-    { "image": "https://images.unsplash.com/photo-1780444064062-d93d02c966d4?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGljZSUyMGNyZWFtJTIwcmVzdHVyYW50fGVufDB8fDB8fHww", "caption": "Happy staff" },
-    { "image": "https://images.unsplash.com/photo-1584108847248-f94dacd94328?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTcxfHxpY2UlMjBjcmVhbSUyMHZpYmVzfGVufDB8fDB8fHww", "caption": "Blueberry has vibes" },
-    { "image": "https://images.unsplash.com/photo-1569448634236-16398247262e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzU5fHxpY2UlMjBjcmVhbSUyMHZpYmVzfGVufDB8fDB8fHww", "caption": "Raspberry Parfait" }
+    { "image": "https://images.unsplash.com/photo-1780444064062-d93d02c966d4?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGljZSUyMGNyZWFtJTIwcmVzdHVyYW50fGVufDB8fDB8fHww", "caption": "Happy staff" }
   ],
   "bookATable": {
     "enabled": true,

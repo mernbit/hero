@@ -4,11 +4,29 @@
   "since": "Since 1952",
   "theme": {
     "accent": "#E4002B",
-    "lavender": "#E4002B",
-    "bgCard": "#ffffff",
-    "textMain": "#000000",
+    "secondary": "#F4A300",
+    "secondarySoft": "#FFF3D9",
+    "highlight": "#2E7D32",
+    "bgCard": "#FFFFFF",
+    "surface": "#FCFCFC",
+    "surfaceAlt": "#F6F6F6",
+    "pageBg": "#F2F4F7",
+    "border": "#E5E7EB",
+    "borderHover": "#E4002B",
+    "textMain": "#111111",
     "textMuted": "#666666",
-    "pageBg": "#f2f4f7"
+    "textLight": "#8A8A8A",
+    "textInverse": "#FFFFFF",
+    "success": "#34C759",
+    "warning": "#F5A623",
+    "danger": "#E5484D",
+    "info": "#4A90E2",
+    "buttonPrimaryHover": "#B80022",
+    "buttonSecondary": "#F4A300",
+    "buttonSecondaryHover": "#D88E00",
+    "badge": "#FFF5CC",
+    "badgeText": "#7A5300",
+    "shadow": "rgba(0,0,0,0.08)"
   },
   "hero": {
     "stats": [
@@ -104,9 +122,7 @@
     { "image": "https://images.unsplash.com/photo-1690965044958-fcbe76b4e37f?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fGtmYyUyMHdpdGglMjBmcmllbmRzfGVufDB8fDB8fHww", "caption": "Get loaded bites" },
     { "image": "https://images.unsplash.com/photo-1685000881984-a487b2d4dcd1?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODd8fGtmYyUyMHdpdGglMjBmcmllbmRzfGVufDB8fDB8fHww", "caption": "A tray and peace" },
     { "image": "https://plus.unsplash.com/premium_photo-1739502905481-75b48cf50b27?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAxfHxrZmMlMjB3aXRoJTIwZnJpZW5kc3xlbnwwfHwwfHx8MA%3D%3D", "caption": "Golden moments" },
-    { "image": "https://plus.unsplash.com/premium_photo-1736876605082-081bdb347850?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTd8fGtmYyUyMHdpdGglMjBmcmllbmRzfGVufDB8fDB8fHww", "caption": "Enjoy every last minute" },
-    { "image": "https://static.vecteezy.com/system/resources/previews/030/542/776/non_2x/fat-woman-bite-piece-of-pizza-overweight-female-is-eating-fast-foods-asian-girl-is-hungry-photo.JPG", "caption": "Cheers" },
-    { "image": "https://plus.unsplash.com/premium_photo-1723734034953-ec42862a84e9?q=80&w=1252&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "caption": "Its time to go all out" }
+    { "image": "https://plus.unsplash.com/premium_photo-1736876605082-081bdb347850?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTd8fGtmYyUyMHdpdGglMjBmcmllbmRzfGVufDB8fDB8fHww", "caption": "Enjoy every last minute" }
   ],
   "bookATable": {
     "enabled": true,
