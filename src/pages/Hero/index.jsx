@@ -25,6 +25,8 @@ const Hero = () => {
   const descRef = useRef(null);
   const buttonRef = useRef(null);
   const coneImgRef = useRef(null);
+  const ghostImgRef = useRef(null);
+  const imageMaskRef = useRef(null);
   const isAnimating = useRef(false);
   const wrapperRef = useRef(null);
   const particleRefs = useRef([]);
@@ -249,6 +251,18 @@ const Hero = () => {
       opacity: 1,
     });
 
+    // ── Push transition setup ──
+    // Ghost takes over the OLD image visually, so the real <img> is free to
+    // switch to the NEW image immediately and wait just below the mask.
+    const ghost = ghostImgRef.current;
+    const pushDistance = imageMaskRef.current.offsetHeight;
+
+    ghost.src = img.src;
+    gsap.set(ghost, { y: 0, opacity: 1 });
+
+    img.src = flavor.cone;
+    gsap.set(img, { y: pushDistance, opacity: 1 });
+
     const master = gsap.timeline({
       onComplete: () => {
         isAnimating.current = false;
@@ -272,27 +286,29 @@ const Hero = () => {
       "start",
     );
 
+    // 2. Push transition: outgoing (ghost) and incoming (img) move together,
+    // same start, same duration, same ease — one continuous strip.
     master.to(
-      img,
+      ghost,
       {
-        y: 30,
-        duration: 0.25,
-        ease: "power2.out",
-      },
-      "start+=0.25",
-    );
-
-    // 2. Pause exactly 0.4s (wait for particles to retract), then Old Image drops down and fades out cleanly
-    master.to(
-      img,
-      {
-        y: -700,
-        // opacity: 0,
+        y: -pushDistance,
         duration: 0.6,
         ease: "power2.inOut",
       },
-      "start+=0.4",
+      "start",
     );
+
+    master.to(
+      img,
+      {
+        y: 0,
+        duration: 0.6,
+        ease: "power2.inOut",
+      },
+      "start",
+    );
+
+    master.set(ghost, { opacity: 0 }, "start+=0.6");
 
     master.to(
       [heading, desc],
@@ -328,23 +344,9 @@ const Hero = () => {
     // 5. Explicitly prepare the new elements just before animating them in protecting against race conditions
     master.addLabel("enter", "start+=1.1");
 
-    // Explicitly set starting values for the new image instead of fromTo
-    master.set(img, { y: 150, opacity: 0, scale: 0.95 }, "enter");
     master.set([heading, desc], { y: 20, opacity: 0 }, "enter");
 
-    // 6. Animate the new image and text in smoothly
-    master.to(
-      img,
-      {
-        y: 0,
-        scale: 1,
-        opacity: 1,
-        duration: 0.8,
-        ease: "back.out(1.5)",
-      },
-      "enter+=0.05",
-    );
-
+    // 6. Animate the text in smoothly (image already pushed into place earlier)
     master.to(
       [heading, desc],
       {
@@ -427,12 +429,24 @@ const Hero = () => {
                 ))}
             </div>
 
-            <img
-              ref={coneImgRef}
-              src={activeFlavor.cone}
-              alt={`${activeFlavor.name} ice cream cone`}
-              className="h-[280px] lg:h-156 rotate-z-335 max-w-full w-auto object-contain lg:-mt-5 drop-shadow-2xl"
-            />
+            <div
+              ref={imageMaskRef}
+              className="relative overflow-hidden w-full h-[280px] lg:h-156"
+            >
+              <img
+                ref={ghostImgRef}
+                src={activeFlavor.cone}
+                alt=""
+                aria-hidden="true"
+                className="absolute top-0 left-0 right-0 mx-auto h-[280px] lg:h-156 rotate-z-335 max-w-full w-auto object-contain lg:-mt-5 drop-shadow-2xl opacity-0 pointer-events-none"
+              />
+              <img
+                ref={coneImgRef}
+                src={activeFlavor.cone}
+                alt={`${activeFlavor.name} ice cream cone`}
+                className="absolute top-0 left-0 right-0 mx-auto h-[280px] lg:h-156 rotate-z-335 max-w-full w-auto object-contain lg:-mt-5 drop-shadow-2xl"
+              />
+            </div>
           </div>
 
           {/* Right */}

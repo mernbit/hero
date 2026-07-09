@@ -1,106 +1,15 @@
-// import React from "react";
-// import { useTenant } from "../context/TenantContext";
-
-// const AboutUs = () => {
-//   const tenant = useTenant();
-//   const about = tenant.about || {};
-
-//   if (!about || !about.enabled) {
-//     return null;
-//   }
-
-//   const {
-//     headline = "About Us",
-//     description = "",
-//     story = "",
-//     image,
-//     stats = []
-//   } = about;
-
-//   return (
-//     <div className="w-full bg-[var(--color-page-bg)] relative py-20 overflow-hidden">
-//       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
-//         {/* Header */}
-//         <div className="mb-12 text-center">
-//           <h2
-//             className="bungee-regular text-3xl md:text-4xl text-text-main uppercase tracking-tight mb-4"
-//           >
-//             {headline}
-//           </h2>
-//           <div className="w-[60px] h-[4px] bg-accent mx-auto rounded-full"></div>
-//         </div>
-
-//         {/* Content */}
-//         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-//           {/* Left: Image */}
-//           {image && (
-//             <div className="flex-1 w-full">
-//               <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_25px_-5px_var(--color-shadow)]">
-//                 <img
-//                   src={image}
-//                   alt="About us"
-//                   className="w-full h-auto object-cover"
-//                 />
-//               </div>
-//             </div>
-//           )}
-
-//           {/* Right: Content */}
-//           <div className="flex-1 w-full">
-//             <div className="bg-[var(--color-surface)] rounded-2xl p-8 md:p-12 shadow-[0_10px_15px_-3px_var(--color-shadow)]">
-//               {/* Description */}
-//               {description && (
-//                 <p className="text-lg text-text-main leading-relaxed mb-8">
-//                   {description}
-//                 </p>
-//               )}
-
-//               {/* Story */}
-//               {story && (
-//                 <div className="mb-8">
-//                   <h3 className="font-bold text-xl text-text-main mb-4">Our Story</h3>
-//                   <p className="text-base text-text-muted leading-relaxed">
-//                     {story}
-//                   </p>
-//                 </div>
-//               )}
-
-//               {/* Stats */}
-//               {stats && stats.length > 0 && (
-//                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-[var(--color-border)]">
-//                   {stats.map((stat, index) => (
-//                     <div key={index} className="text-center">
-//                       <div className="font-black text-3xl md:text-4xl text-accent mb-1">
-//                         {stat.value}
-//                       </div>
-//                       <div className="text-sm text-text-muted uppercase tracking-wide">
-//                         {stat.label}
-//                       </div>
-//                     </div>
-//                   ))}
-//                 </div>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AboutUs;
-
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useTenant } from "../context/TenantContext";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const AboutUs = () => {
   const tenant = useTenant();
   const about = tenant.about || {};
-
   const sectionRef = useRef(null);
   const statRefs = useRef([]);
+  gsap.registerPlugin(ScrollTrigger);
 
   const {
     enabled,
@@ -132,8 +41,6 @@ const AboutUs = () => {
       if (reduceMotion) {
         gsap.set(
           [
-            ".about-eyebrow",
-            ".about-headline",
             ".about-frame",
             ".about-image img",
             ".about-content > *",
@@ -142,9 +49,7 @@ const AboutUs = () => {
           { clearProps: "all" },
         );
       } else {
-        tl.from(".about-eyebrow", { opacity: 0, x: -16, duration: 0.5 })
-          .from(".about-headline", { opacity: 0, y: 22, duration: 0.7 }, "<0.1")
-          .from(".about-frame", { opacity: 0, duration: 0.5 }, "<0.2")
+        tl.from(".about-frame", { opacity: 0, duration: 0.5 }, "<0.2")
           .fromTo(
             ".about-image img",
             { clipPath: "inset(0 100% 0 0)" },
@@ -197,7 +102,7 @@ const AboutUs = () => {
 
   return (
     <section
-    id="about"
+      id="about"
       ref={sectionRef}
       className="w-full bg-[var(--color-page-bg)] py-24 md:py-32 overflow-hidden"
     >
@@ -247,7 +152,9 @@ const AboutUs = () => {
             {story && (
               <div
                 className={
-                  description ? "mt-10 pt-10 border-t border-[var(--color-border)]" : ""
+                  description
+                    ? "mt-10 pt-10 border-t border-[var(--color-border)]"
+                    : ""
                 }
               >
                 <span className="block text-xs uppercase tracking-[0.2em] text-accent font-semibold mb-3">
