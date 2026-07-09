@@ -28,10 +28,10 @@ const Testimonials = () => {
     railRef.current = railRef.current.slice(0, testimonials.length);
   }, [testimonials.length]);
 
-  // Card fades + rises into place; the old card fades + dips out first.
+  // Card slides horizontally based on direction.
   // Data swap happens mid-timeline via tl.call(), once the outgoing card
   // is fully hidden.
-  const animateTransition = useCallback((newIndex) => {
+  const animateTransition = useCallback((newIndex, direction = "next") => {
     transitionTweenRef.current?.kill();
 
     const content = contentRef.current;
@@ -47,16 +47,19 @@ const Testimonials = () => {
       return;
     }
 
+    const isNext = direction === "next";
+    const exitX = isNext ? 500 : -500;
+    const enterX = isNext ? -500 : 500;
+
     const tl = gsap.timeline({ onComplete: () => setIsAnimating(false) });
 
     tl.to(content, {
-      x: 500,
-      // opacity: 0,
+      x: exitX,
       duration: 0.35,
       ease: "power2.in",
     })
       .call(() => setCurrentIndex(newIndex))
-      .set(content, { x: -500 })
+      .set(content, { x: enterX })
       .to(content, {
         x: 0,
         opacity: 1,
@@ -85,21 +88,22 @@ const Testimonials = () => {
   }, []);
 
   const changeTestimonial = useCallback(
-    (newIndex) => {
+    (newIndex, direction = "next") => {
       if (isAnimating || newIndex === currentIndex) return;
       setIsAnimating(true);
-      animateTransition(newIndex);
+      animateTransition(newIndex, direction);
     },
     [currentIndex, isAnimating, animateTransition],
   );
 
   const nextTestimonial = useCallback(() => {
-    changeTestimonial((currentIndex + 1) % testimonials.length);
+    changeTestimonial((currentIndex + 1) % testimonials.length, "next");
   }, [currentIndex, testimonials.length, changeTestimonial]);
 
   const prevTestimonial = useCallback(() => {
     changeTestimonial(
       (currentIndex - 1 + testimonials.length) % testimonials.length,
+      "prev",
     );
   }, [currentIndex, testimonials.length, changeTestimonial]);
 
@@ -182,7 +186,7 @@ const Testimonials = () => {
           onTouchEnd={handleTouchEnd}
         >
           {/* Card zone — sized generously so the quote-bubble accents have room to sit outside the card edges */}
-          <div className="relative px-6 pt-6 pb-8 md:px-10 md:pt-10 md:pb-12">
+          <div className="relative px-6 pt-6 pb-8 md:px-10 md:pt-10 md:pb-12 min-h-[400px]">
             <div ref={contentRef}>
               <article
                 ref={cardRef}
@@ -268,7 +272,7 @@ const Testimonials = () => {
             <div className="w-full flex justify-center">
               <div className="flex gap-2  flex-shrink-0">
                 <button
-                  onClick={prevTestimonial}
+                  onClick={nextTestimonial}
                   disabled={isAnimating}
                   aria-label="Previous testimonial"
                   className="w-10 h-10 rounded-full border-2 border-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
@@ -284,7 +288,7 @@ const Testimonials = () => {
                   </svg>
                 </button>
                 <button
-                  onClick={nextTestimonial}
+                  onClick={prevTestimonial}
                   disabled={isAnimating}
                   aria-label="Next testimonial"
                   className="w-10 h-10 rounded-full border-2 border-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"

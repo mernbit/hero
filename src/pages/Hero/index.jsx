@@ -272,6 +272,16 @@ const Hero = () => {
       "start",
     );
 
+    master.to(
+      img,
+      {
+        y: 30,
+        duration: 0.25,
+        ease: "power2.out",
+      },
+      "start+=0.25",
+    );
+
     // 2. Pause exactly 0.4s (wait for particles to retract), then Old Image drops down and fades out cleanly
     master.to(
       img,
