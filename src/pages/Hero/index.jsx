@@ -286,16 +286,30 @@ const Hero = () => {
       "start",
     );
 
-    // 2. Push transition: outgoing (ghost) and incoming (img) move together,
-    // same start, same duration, same ease — one continuous strip.
+    // 2. ANTICIPATION — small dip + squash on the outgoing ghost before launch
+    master.to(
+      ghost,
+      {
+        y: 30, // dips down slightly (opposite of push direction)
+        duration: 0.3,
+        ease: "power2.out",
+      },
+      "start",
+    );
+
+    // 2b. Push transition: outgoing (ghost) and incoming (img) move together,
+    // same start, same duration, same ease — one continuous strip. Starts
+    // right as the anticipation dip finishes.
     master.to(
       ghost,
       {
         y: -pushDistance,
+        scaleY: 1,
+        scaleX: 1,
         duration: 0.6,
         ease: "power2.inOut",
       },
-      "start",
+      "start+=0.15",
     );
 
     master.to(
@@ -305,10 +319,10 @@ const Hero = () => {
         duration: 0.6,
         ease: "power2.inOut",
       },
-      "start",
+      "start+=0.15",
     );
 
-    master.set(ghost, { opacity: 0 }, "start+=0.6");
+    master.set(ghost, { opacity: 0 }, "start+=0.75");
 
     master.to(
       [heading, desc],
@@ -441,10 +455,11 @@ const Hero = () => {
                 className="absolute top-0 left-0 right-0 mx-auto h-[280px] lg:h-156 rotate-z-335 max-w-full w-auto object-contain lg:-mt-5 drop-shadow-2xl opacity-0 pointer-events-none"
               />
               <img
+                id="ghost-img"
                 ref={coneImgRef}
                 src={activeFlavor.cone}
-                alt={`${activeFlavor.name} ice cream cone`}
-                className="absolute top-0 left-0 right-0 mx-auto h-[280px] lg:h-156 rotate-z-335 max-w-full w-auto object-contain lg:-mt-5 drop-shadow-2xl"
+                alt={`${activeFlavor.name}`}
+                className="absolute top-0 left-0 right-0 mx-auto pt-5 h-[280px] lg:h-156 rotate-z-335 max-w-full w-auto object-contain lg:-mt-5 drop-shadow-2xl"
               />
             </div>
           </div>
