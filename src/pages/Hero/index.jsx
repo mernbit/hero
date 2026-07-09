@@ -37,35 +37,43 @@ const Hero = () => {
   const ghostDescRef = useRef(null);
 
   const scatterParticles = (particles, timeline, label) => {
-    // 7 positions: TL, TR, L, R, BL, BR, TC
+    // 9 positions: 5 main + 4 sub-particles
     const positions = [
       {
-        x: () => gsap.utils.random(-208, -176),
-        y: () => gsap.utils.random(-208, -176),
+        x: () => gsap.utils.random(-209, -114),
+        y: () => gsap.utils.random(-209, -114),
       },
       {
-        x: () => gsap.utils.random(176, 208),
-        y: () => gsap.utils.random(-208, -176),
+        x: () => gsap.utils.random(114, 209),
+        y: () => gsap.utils.random(-209, -114),
       },
       {
-        x: () => gsap.utils.random(-208, -176),
-        y: () => gsap.utils.random(-40, 40),
+        x: () => gsap.utils.random(-209, -114),
+        y: () => gsap.utils.random(-95, 95),
       },
       {
-        x: () => gsap.utils.random(144, 208),
-        y: () => gsap.utils.random(-40, 40),
+        x: () => gsap.utils.random(114, 209),
+        y: () => gsap.utils.random(-95, 95),
       },
       {
-        x: () => gsap.utils.random(-176, -144),
-        y: () => gsap.utils.random(144, 176),
+        x: () => gsap.utils.random(-95, 95),
+        y: () => gsap.utils.random(114, 209),
       },
       {
-        x: () => gsap.utils.random(128, 160),
-        y: () => gsap.utils.random(144, 176),
+        x: () => gsap.utils.random(-180, -100),
+        y: () => gsap.utils.random(-100, 100),
       },
       {
-        x: () => gsap.utils.random(-40, 40),
-        y: () => gsap.utils.random(-208, -176),
+        x: () => gsap.utils.random(100, 180),
+        y: () => gsap.utils.random(-100, 100),
+      },
+      {
+        x: () => gsap.utils.random(-180, -100),
+        y: () => gsap.utils.random(100, 180),
+      },
+      {
+        x: () => gsap.utils.random(100, 180),
+        y: () => gsap.utils.random(100, 180),
       },
     ];
 
@@ -76,7 +84,8 @@ const Hero = () => {
         {
           x: pos.x(),
           y: pos.y(),
-          scale: gsap.utils.random(0.7, 1.2),
+          rotation: gsap.utils.random(-30, 30),
+          scale: gsap.utils.random(0.8, 1.1),
           opacity: 1,
           duration: gsap.utils.random(0.6, 1),
           ease: "back.out(1.2)",
@@ -105,32 +114,40 @@ const Hero = () => {
   const setParticlesFinalState = () => {
     const positions = [
       {
-        x: () => gsap.utils.random(-208, -176),
-        y: () => gsap.utils.random(-208, -176),
+        x: () => gsap.utils.random(-209, -114),
+        y: () => gsap.utils.random(-209, -114),
       },
       {
-        x: () => gsap.utils.random(176, 208),
-        y: () => gsap.utils.random(-208, -176),
+        x: () => gsap.utils.random(114, 209),
+        y: () => gsap.utils.random(-209, -114),
       },
       {
-        x: () => gsap.utils.random(-208, -176),
-        y: () => gsap.utils.random(-40, 40),
+        x: () => gsap.utils.random(-209, -114),
+        y: () => gsap.utils.random(-95, 95),
       },
       {
-        x: () => gsap.utils.random(144, 208),
-        y: () => gsap.utils.random(-40, 40),
+        x: () => gsap.utils.random(114, 209),
+        y: () => gsap.utils.random(-95, 95),
       },
       {
-        x: () => gsap.utils.random(-176, -144),
-        y: () => gsap.utils.random(144, 176),
+        x: () => gsap.utils.random(-130, 130),
+        y: () => gsap.utils.random(114, 209),
       },
       {
-        x: () => gsap.utils.random(128, 160),
-        y: () => gsap.utils.random(144, 176),
+        x: () => gsap.utils.random(-180, -100),
+        y: () => gsap.utils.random(-100, 100),
       },
       {
-        x: () => gsap.utils.random(-40, 40),
-        y: () => gsap.utils.random(-208, -176),
+        x: () => gsap.utils.random(100, 180),
+        y: () => gsap.utils.random(-100, 100),
+      },
+      {
+        x: () => gsap.utils.random(-180, -100),
+        y: () => gsap.utils.random(100, 180),
+      },
+      {
+        x: () => gsap.utils.random(100, 180),
+        y: () => gsap.utils.random(100, 180),
       },
     ];
     particleRefs.current.forEach((particle, i) => {
@@ -474,15 +491,15 @@ const Hero = () => {
           >
             {/* Particles */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[-1]">
-              {Array(7)
+              {Array(9)
                 .fill(0)
                 .map((_, i) => (
                   <img
                     key={i}
                     ref={(el) => (particleRefs.current[i] = el)}
-                    src={activeFlavor.particle}
+                    src={i < 5 ? activeFlavor.particle : `/images/${activeFlavor.name.toLowerCase()}-sub-particle.png`}
                     alt=""
-                    className="absolute w-20 h-20 lg:w-30 lg:h-30 object-contain opacity-0 scale-50"
+                    className={`absolute object-contain opacity-0 scale-50 ${i < 5 ? 'w-24 h-24 lg:w-36 lg:h-36' : 'w-16 h-16 lg:w-24 lg:h-24'}`}
                   />
                 ))}
             </div>

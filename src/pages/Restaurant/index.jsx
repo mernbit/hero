@@ -27,9 +27,9 @@ const Restaurant = () => {
           <Gallery />
           <TopDeals />
           <Testimonials />
-          <BookATable />
           <AboutUs />
           <LocationHours />
+          <BookATable />
           <Footer />
         </div>
       </CartProvider>

@@ -33,7 +33,7 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="w-full bg-[var(--color-page-bg)] relative py-16 md:py-24 overflow-hidden">
+    <section id="gallery" className="w-full bg-(--color-page-bg) relative py-16 md:py-24 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         {/* Header */}
         <header className="mb-12 md:mb-16 text-center">

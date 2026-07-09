@@ -104,7 +104,7 @@ const AboutUs = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="w-full bg-[var(--color-page-bg)] py-24 md:py-32 overflow-hidden"
+      className="w-full bg-(--color-page-bg) py-24 md:py-32 overflow-hidden"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Eyebrow + headline */}
@@ -117,7 +117,7 @@ const AboutUs = () => {
         {/* Content */}
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-y-14 lg:gap-x-12">
           {/* Spine — ties the two columns together on large screens */}
-          <div className="hidden lg:block absolute left-[calc(41.666%+1.5rem)] top-2 bottom-2 w-px bg-[var(--color-border)]">
+          <div className="hidden lg:block absolute left-[calc(41.666%+1.5rem)] top-2 bottom-2 w-px bg-(--color-border)">
             <span className="absolute -left-[3px] top-0 w-[7px] h-[7px] rounded-full bg-accent" />
           </div>
 
@@ -126,7 +126,7 @@ const AboutUs = () => {
             <div className="lg:col-span-5">
               <div className="about-image relative group">
                 <div className="about-frame absolute -inset-3 border border-accent/30 rounded-sm -z-10 translate-x-3 translate-y-3" />
-                <div className="relative overflow-hidden rounded-sm bg-[var(--color-surface)] aspect-[4/5] shadow-[0_20px_25px_-5px_var(--color-shadow)]">
+                <div className="relative overflow-hidden rounded-sm bg-(--color-surface) aspect-[4/5] shadow-[0_20px_25px_-5px_var(--color-shadow)]">
                   <img
                     src={image}
                     alt="About us"
@@ -171,12 +171,12 @@ const AboutUs = () => {
         {/* Stats — hairline grid instead of boxed cards */}
         {stats.length > 0 && (
           <div
-            className={`grid ${statsCols} gap-px bg-[var(--color-border)] mt-20 rounded-sm overflow-hidden`}
+            className={`grid ${statsCols} gap-px bg-(--color-border) mt-20 rounded-sm overflow-hidden`}
           >
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="about-stat bg-[var(--color-surface)] px-6 py-8 md:px-8 md:py-10 flex flex-col gap-2"
+                className="about-stat bg-(--color-surface) px-6 py-8 md:px-8 md:py-10 flex flex-col gap-2"
               >
                 <div
                   ref={(el) => (statRefs.current[index] = el)}
