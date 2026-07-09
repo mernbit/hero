@@ -30,37 +30,42 @@ const Hero = () => {
   const isAnimating = useRef(false);
   const wrapperRef = useRef(null);
   const particleRefs = useRef([]);
+  const textMaskRef = useRef(null); // overflow-hidden container around heading+desc
+  const textBlockRef = useRef(null); // wraps the REAL headingRef + descRef, this is what pushes in
+  const ghostTextRef = useRef(null); // wraps the GHOST (old) heading + desc, this is what pushes out
+  const ghostHeadingRef = useRef(null);
+  const ghostDescRef = useRef(null);
 
   const scatterParticles = (particles, timeline, label) => {
     // 7 positions: TL, TR, L, R, BL, BR, TC
     const positions = [
       {
-        x: () => gsap.utils.random(-260, -220),
-        y: () => gsap.utils.random(-260, -220),
+        x: () => gsap.utils.random(-208, -176),
+        y: () => gsap.utils.random(-208, -176),
       },
       {
-        x: () => gsap.utils.random(220, 260),
-        y: () => gsap.utils.random(-260, -220),
+        x: () => gsap.utils.random(176, 208),
+        y: () => gsap.utils.random(-208, -176),
       },
       {
-        x: () => gsap.utils.random(-260, -220),
-        y: () => gsap.utils.random(-50, 50),
+        x: () => gsap.utils.random(-208, -176),
+        y: () => gsap.utils.random(-40, 40),
       },
       {
-        x: () => gsap.utils.random(180, 260),
-        y: () => gsap.utils.random(-50, 50),
+        x: () => gsap.utils.random(144, 208),
+        y: () => gsap.utils.random(-40, 40),
       },
       {
-        x: () => gsap.utils.random(-220, -180),
-        y: () => gsap.utils.random(180, 220),
+        x: () => gsap.utils.random(-176, -144),
+        y: () => gsap.utils.random(144, 176),
       },
       {
-        x: () => gsap.utils.random(160, 200),
-        y: () => gsap.utils.random(180, 220),
+        x: () => gsap.utils.random(128, 160),
+        y: () => gsap.utils.random(144, 176),
       },
       {
-        x: () => gsap.utils.random(-50, 50),
-        y: () => gsap.utils.random(-260, -220),
+        x: () => gsap.utils.random(-40, 40),
+        y: () => gsap.utils.random(-208, -176),
       },
     ];
 
@@ -73,7 +78,7 @@ const Hero = () => {
           y: pos.y(),
           scale: gsap.utils.random(0.7, 1.2),
           opacity: 1,
-          duration: gsap.utils.random(0.8, 1.2),
+          duration: gsap.utils.random(0.6, 1),
           ease: "back.out(1.2)",
         },
         `${label}+=${gsap.utils.random(0, 0.2)}`,
@@ -100,32 +105,32 @@ const Hero = () => {
   const setParticlesFinalState = () => {
     const positions = [
       {
-        x: () => gsap.utils.random(-260, -220),
-        y: () => gsap.utils.random(-260, -220),
+        x: () => gsap.utils.random(-208, -176),
+        y: () => gsap.utils.random(-208, -176),
       },
       {
-        x: () => gsap.utils.random(220, 260),
-        y: () => gsap.utils.random(-260, -220),
+        x: () => gsap.utils.random(176, 208),
+        y: () => gsap.utils.random(-208, -176),
       },
       {
-        x: () => gsap.utils.random(-260, -220),
-        y: () => gsap.utils.random(-50, 50),
+        x: () => gsap.utils.random(-208, -176),
+        y: () => gsap.utils.random(-40, 40),
       },
       {
-        x: () => gsap.utils.random(180, 260),
-        y: () => gsap.utils.random(-50, 50),
+        x: () => gsap.utils.random(144, 208),
+        y: () => gsap.utils.random(-40, 40),
       },
       {
-        x: () => gsap.utils.random(-220, -180),
-        y: () => gsap.utils.random(180, 220),
+        x: () => gsap.utils.random(-176, -144),
+        y: () => gsap.utils.random(144, 176),
       },
       {
-        x: () => gsap.utils.random(160, 200),
-        y: () => gsap.utils.random(180, 220),
+        x: () => gsap.utils.random(128, 160),
+        y: () => gsap.utils.random(144, 176),
       },
       {
-        x: () => gsap.utils.random(-50, 50),
-        y: () => gsap.utils.random(-260, -220),
+        x: () => gsap.utils.random(-40, 40),
+        y: () => gsap.utils.random(-208, -176),
       },
     ];
     particleRefs.current.forEach((particle, i) => {
@@ -242,6 +247,23 @@ const Hero = () => {
     const img = coneImgRef.current;
     const requiredScale = getRevealScale();
 
+    // ── Text push transition setup ──
+    const textGhost = ghostTextRef.current;
+    const textBlock = textBlockRef.current;
+    const ghostHeadingEl = ghostHeadingRef.current;
+    const ghostDescEl = ghostDescRef.current;
+    const textPushDistance = textMaskRef.current.offsetHeight;
+
+    // Ghost takes over the OLD text visually
+    ghostHeadingEl.textContent = heading.textContent;
+    ghostDescEl.textContent = desc.textContent;
+    gsap.set(textGhost, { y: 0, opacity: 1 });
+
+    // Real block gets NEW text immediately, waits just below the mask
+    heading.textContent = flavor.name;
+    desc.textContent = flavor.desc;
+    gsap.set(textBlock, { y: textPushDistance, opacity: 1 });
+
     // Disable CSS transition during GSAP animation so they don't fight
     img.style.transition = "none";
 
@@ -286,20 +308,23 @@ const Hero = () => {
       "start",
     );
 
-    // 2. ANTICIPATION — small dip + squash on the outgoing ghost before launch
+    // 2. ANTICIPATION — small dip
     master.to(
       ghost,
       {
-        y: 30, // dips down slightly (opposite of push direction)
-        duration: 0.3,
+        y: 30,
+        duration: 0.55,
         ease: "power2.out",
       },
       "start",
     );
 
+    // Anticipation dip on outgoing text
+    master.to(textGhost, { y: 30, duration: 0.3, ease: "power2.out" }, "start");
     // 2b. Push transition: outgoing (ghost) and incoming (img) move together,
     // same start, same duration, same ease — one continuous strip. Starts
     // right as the anticipation dip finishes.
+
     master.to(
       ghost,
       {
@@ -309,36 +334,27 @@ const Hero = () => {
         duration: 0.6,
         ease: "power2.inOut",
       },
-      "start+=0.15",
+      "start+=0.35",
     );
-
+    master.to(
+      textGhost,
+      { y: -textPushDistance, duration: 0.6, ease: "power2.inOut" },
+      "start+=0.35",
+    );
+    master.to(
+      textBlock,
+      { y: 0, duration: 0.6, ease: "power2.inOut" },
+      "start+=0.35",
+    );
     master.to(
       img,
-      {
-        y: 0,
-        duration: 0.6,
-        ease: "power2.inOut",
-      },
-      "start+=0.15",
+      { y: 0, duration: 0.6, ease: "power2.inOut" },
+      "start+=0.35",
     );
 
-    master.set(ghost, { opacity: 0 }, "start+=0.75");
-
-    master.to(
-      [heading, desc],
-      {
-        y: -20,
-        opacity: 0,
-        duration: 0.5,
-        ease: "power2.inOut",
-        stagger: 0.05,
-      },
-      "start+=0.2",
-    );
-
-    // 3. Swap state EXACTLY at 1.05s (safely after the 1.0s image exit)
-    master.addLabel("swap", "start+=1.05");
-
+    master.set(ghost, { opacity: 0 }, "start+=0.95");
+    // 3. Swap state EXACTLY at 1.25s (safely after the 1.0s image exit)
+    master.addLabel("swap", "start+=1.25");
     master.call(
       () => {
         setActiveFlavor(flavor);
@@ -351,30 +367,15 @@ const Hero = () => {
     master.set(
       wrapperRef.current,
       { backgroundColor: flavor.bgColor },
-      "start+=1.7",
+      "start+=1.9",
     );
-    master.set(circle, { scale: 0, opacity: 0 }, "start+=1.85");
+    master.set(circle, { scale: 0, opacity: 0 }, "start+=2.05");
 
     // 5. Explicitly prepare the new elements just before animating them in protecting against race conditions
-    master.addLabel("enter", "start+=1.1");
+    master.addLabel("enter", "start+=1.3");
 
-    master.set([heading, desc], { y: 20, opacity: 0 }, "enter");
-
-    // 6. Animate the text in smoothly (image already pushed into place earlier)
-    master.to(
-      [heading, desc],
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "expo.out",
-        stagger: 0.08,
-      },
-      "enter+=0.2",
-    );
-
-    // 7. Scatter particles 1s after cone enters (cone enters at enter+0.05, so enter+1.05)
-    master.addLabel("scatterNewParticles", "enter+=1.05");
+    // 7. Scatter particles 0.3s after cone enters (cone enters at enter+0.05, so enter+0.3)
+    master.addLabel("scatterNewParticles", "enter+=0.3");
     scatterParticles(particleRefs.current, master, "scatterNewParticles");
   });
 
@@ -403,7 +404,50 @@ const Hero = () => {
             id="left"
             className="col-start-1 lg:col-start-1 lg:row-start-1 lg:row-end-3 self-center z-2 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1"
           >
-            <h1
+            <div
+              ref={textMaskRef}
+              className="relative overflow-y-clip w-full  h-[150px] lg:h-[180px]"
+            >
+              {/* Ghost (old) text — pushes OUT */}
+              <div
+                ref={ghostTextRef}
+                aria-hidden="true"
+                className="absolute top-0 left-0 w-full flex flex-col items-center lg:items-start opacity-0 pointer-events-none"
+              >
+                <h1
+                  ref={ghostHeadingRef}
+                  className="bungee-regular font-black text-[48px] lg:text-[64px] leading-none mb-4 text-text-main"
+                >
+                  {activeFlavor.name}
+                </h1>
+                <p
+                  ref={ghostDescRef}
+                  className="text-[14px] lg:text-[15px] leading-[1.6] text-text-muted max-w-[280px] lg:max-w-[220px] mb-7"
+                >
+                  {activeFlavor.desc}
+                </p>
+              </div>
+
+              {/* Real (current/new) text — pushes IN */}
+              <div
+                ref={textBlockRef}
+                className="w-full flex flex-col items-center lg:items-start"
+              >
+                <h1
+                  ref={headingRef}
+                  className="bungee-regular font-black text-[48px] lg:text-[64px] leading-none mb-4 text-text-main"
+                >
+                  {activeFlavor.name}
+                </h1>
+                <p
+                  ref={descRef}
+                  className="text-[14px] lg:text-[15px] leading-[1.6] text-text-muted max-w-[280px] lg:max-w-[220px] mb-7"
+                >
+                  {activeFlavor.desc}
+                </p>
+              </div>
+            </div>
+            {/* <h1
               ref={headingRef}
               className="bungee-regular font-black text-[48px] lg:text-[64px] leading-none mb-4 text-text-main"
             >
@@ -414,7 +458,7 @@ const Hero = () => {
               className="text-[14px] lg:text-[15px] leading-[1.6] text-text-muted max-w-[280px] lg:max-w-[220px] mb-7"
             >
               {activeFlavor.desc}
-            </p>
+            </p> */}
             <button
               ref={buttonRef}
               className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:bg-[var(--color-button-primary-hover)] hover:-translate-y-0.5 transition-all"
@@ -475,7 +519,7 @@ const Hero = () => {
                   <div className="bungee-regular font-bold text-[28px] lg:text-[38px] leading-none">
                     {stat.value}
                   </div>
-                  <div className="text-[14px] lg:text-[18px] text-[var(--color-text-light)] mt-1">
+                  <div className="text-[14px] lg:text-[18px]  mt-1">
                     {stat.label}
                   </div>
                 </div>
