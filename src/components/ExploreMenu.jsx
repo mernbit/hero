@@ -19,7 +19,7 @@ const ExploreMenu = () => {
   };
 
   return (
-    <div id="explore" className="w-full bg-[var(--color-surface-alt)] relative py-16 overflow-hidden">
+    <div id="explore" className="w-full bg-(--color-surface-alt) relative py-16 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         {/* Header Row */}
         <div className="flex items-start justify-between mb-10">
@@ -42,7 +42,7 @@ const ExploreMenu = () => {
           {/* Left Arrow */}
           <button
             onClick={() => scroll("left")}
-            className="absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-10 w-[36px] h-[36px] rounded-full border-2 border-accent bg-[var(--color-surface)] flex items-center justify-center cursor-pointer hover:bg-accent hover:text-white transition-all group shadow-md"
+            className="absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-10 w-[36px] h-[36px] rounded-full border-2 border-accent bg-(--color-surface) flex items-center justify-center cursor-pointer hover:bg-accent hover:text-white transition-all group shadow-md"
           >
             <svg
               viewBox="0 0 24 24"
@@ -70,7 +70,7 @@ const ExploreMenu = () => {
                 style={{ minWidth: "160px" }}
               >
                 {/* Circle Image */}
-                <div className="w-[140px] h-[140px] md:w-[160px] md:h-[160px] rounded-l-full rounded-t-full bg-[var(--color-surface)] shadow-sm flex items-center justify-center overflow-hidden group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+                <div className="w-[140px] h-[140px] md:w-[160px] md:h-[160px] rounded-l-full rounded-t-full bg-(--color-surface) shadow-sm flex items-center justify-center overflow-hidden group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
                   <img
                     src={cat.image}
                     alt={cat.name}
@@ -92,7 +92,7 @@ const ExploreMenu = () => {
           {/* Right Arrow */}
           <button
             onClick={() => scroll("right")}
-            className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-10 w-[36px] h-[36px] rounded-full border-2 border-accent bg-[var(--color-surface)] flex items-center justify-center cursor-pointer hover:bg-accent hover:text-white transition-all group shadow-md"
+            className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-10 w-[36px] h-[36px] rounded-full border-2 border-accent bg-(--color-surface) flex items-center justify-center cursor-pointer hover:bg-accent hover:text-white transition-all group shadow-md"
           >
             <svg
               viewBox="0 0 24 24"

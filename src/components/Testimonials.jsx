@@ -160,12 +160,12 @@ const Testimonials = () => {
 
   return (
     <section
-      className="w-full bg-[var(--color-bg-card)] relative py-16 md:py-24 overflow-hidden"
+      className="w-full bg-bg-card relative py-16 md:py-24 overflow-hidden"
       aria-label="Customer testimonials"
     >
       {/* Ambient background blobs */}
-      <div className="pointer-events-none absolute -top-16 -left-16 w-72 h-72 rounded-full bg-[var(--color-text-light)]/10 blur-2xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[var(--color-text-light)]/10 blur-2xl translate-x-1/4 translate-y-1/4" />
+      <div className="pointer-events-none absolute -top-16 -left-16 w-72 h-72 rounded-full bg-(--color-text-light)/10 blur-2xl" />
+      <div className="pointer-events-none absolute bottom-0 right-0 w-96 h-96 rounded-full bg-(--color-text-light)/10 blur-2xl translate-x-1/4 translate-y-1/4" />
 
       <div className="max-w-[720px] mx-auto px-4 md:px-6 relative">
         <header className="mb-12 md:mb-16 text-center">
@@ -190,7 +190,7 @@ const Testimonials = () => {
             <div ref={contentRef}>
               <article
                 ref={cardRef}
-                className="relative bg-white rounded-[28px] px-8 py-12 md:px-14 md:py-14 shadow-[0_25px_50px_-12px_var(--color-shadow)] rotate-[-1deg]"
+                className="relative bg-white rounded-[28px] px-8 py-12 md:px-14 md:py-14 shadow-[0_25px_50px_-12px_var(--color-shadow)] -rotate-1"
                 aria-live="polite"
               >
                 {/* Big quote bubble, top right */}
@@ -270,7 +270,7 @@ const Testimonials = () => {
               />
             </div> */}
             <div className="w-full flex justify-center">
-              <div className="flex gap-2  flex-shrink-0">
+              <div className="flex gap-2  shrink-0">
                 <button
                   onClick={nextTestimonial}
                   disabled={isAnimating}

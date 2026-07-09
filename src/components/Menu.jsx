@@ -1,6 +1,6 @@
 import React from "react";
-import { useTenant } from "../../context/TenantContext";
-import { useCart } from "../../context/CartContext";
+import { useTenant } from "../context/TenantContext";
+import { useCart } from "../context/CartContext";
 
 const Menu = () => {
   const tenant = useTenant();
@@ -10,7 +10,7 @@ const Menu = () => {
   return (
     <div
       id="products"
-      className="w-full bg-[var(--color-page-bg)] relative py-20 overflow-x-hidden "
+      className="w-full bg-(--color-page-bg) relative py-20 overflow-x-hidden "
     >
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         <h2 className="bungee-regular text-5xl text-center text-text-main mb-16">
@@ -22,7 +22,7 @@ const Menu = () => {
             <div
               key={item.id}
               onClick={() => openModal(item)}
-              className="relative bg-[var(--color-surface)] pt-[50px] pb-6 flex flex-col group shadow-[0_4px_6px_-1px_var(--color-shadow)] hover:shadow-[0_25px_50px_-12px_var(--color-shadow)] transition-all duration-300 cursor-pointer"
+              className="relative bg-(--color-surface) pt-[50px] pb-6 flex flex-col group shadow-[0_4px_6px_-1px_var(--color-shadow)] hover:shadow-[0_25px_50px_-12px_var(--color-shadow)] transition-all duration-300 cursor-pointer"
             >
               {/* Three Top Rectangles */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-[8px]">

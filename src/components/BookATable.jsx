@@ -76,7 +76,7 @@ const BookATable = () => {
               {subtext}
             </p>
             <button
-              className="bg-[var(--color-surface)] text-[var(--color-accent)] font-bold text-xs sm:text-sm md:text-base py-3 md:py-4 px-6 md:px-8 rounded-lg cursor-pointer hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl tracking-wider uppercase"
+              className="bg-(--color-surface) text-accent font-bold text-xs sm:text-sm md:text-base py-3 md:py-4 px-6 md:px-8 rounded-lg cursor-pointer hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl tracking-wider uppercase"
             >
               {buttonText}
             </button>

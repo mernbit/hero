@@ -72,7 +72,7 @@ const Gallery = () => {
                 >
                   {/* Polaroid Card */}
                   <div 
-                    className="bg-[var(--color-surface)] rounded-2xl p-3 shadow-[0_10px_25px_-5px_var(--color-shadow)]"
+                    className="bg-(--color-surface) rounded-2xl p-3 shadow-[0_10px_25px_-5px_var(--color-shadow)]"
                     style={{
                       boxShadow: isHovered 
                         ? '0 25px 50px -12px var(--color-shadow)' 
@@ -114,7 +114,7 @@ const Gallery = () => {
               return (
                 <div
                   key={index}
-                  className="flex-shrink-0 snap-start cursor-pointer transition-all duration-500 ease-out"
+                  className="shrink-0 snap-start cursor-pointer transition-all duration-500 ease-out"
                   style={{
                     transform: `rotate(${style.rotation}deg) scale(${isHovered ? 1.05 : 1})`,
                     zIndex: isHovered ? 100 : style.zIndex,
@@ -125,7 +125,7 @@ const Gallery = () => {
                   onClick={() => setSelectedImage(item.image)}
                 >
                   {/* Polaroid Card */}
-                  <div className="bg-[var(--color-surface)] rounded-2xl p-3 shadow-[0_10px_25px_-5px_var(--color-shadow)]">
+                  <div className="bg-(--color-surface) rounded-2xl p-3 shadow-[0_10px_25px_-5px_var(--color-shadow)]">
                     {/* Image Area - Square 1:1, 150px */}
                     <div 
                       className="relative overflow-hidden rounded-xl mb-3"
@@ -155,7 +155,7 @@ const Gallery = () => {
       {/* Lightbox Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/90 z-[10000] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 z-10000 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <button

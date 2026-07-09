@@ -218,7 +218,7 @@ const LocationHours = () => {
     : "";
 
   return (
-    <section className="w-full bg-[var(--color-surface-alt)] py-16 md:py-24 overflow-hidden">
+    <section className="w-full bg-(--color-surface-alt) py-16 md:py-24 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10">
         {/* Header row: headline + live status stamp */}
         <div className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
@@ -249,7 +249,7 @@ const LocationHours = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
           {/* Left: ticket-stub info card */}
           <div className="lg:col-span-5">
-            <div className="bg-[var(--color-surface)] rounded-sm overflow-hidden">
+            <div className="bg-(--color-surface) rounded-sm overflow-hidden">
               <Perforation />
 
               <div className="px-6 md:px-8 py-2">
@@ -268,7 +268,7 @@ const LocationHours = () => {
 
                 {/* Contact — pill buttons */}
                 {(phone || email) && (
-                  <div className="py-5 border-t border-dashed border-[var(--color-text-light)]/30">
+                  <div className="py-5 border-t border-dashed border-(--color-text-light)/30">
                     <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-3">
                       <IconPhone className="w-3 h-3" />
                       Contact
@@ -277,7 +277,7 @@ const LocationHours = () => {
                       {phone && (
                         <a
                           href={`tel:${phone}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide px-3 py-2 rounded-sm border border-[var(--color-text-light)]/30 text-text-main hover:border-accent hover:text-accent transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide px-3 py-2 rounded-sm border border-(--color-text-light)/30 text-text-main hover:border-accent hover:text-accent transition-colors"
                         >
                           <IconPhone className="w-3 h-3" />
                           {phone}
@@ -286,7 +286,7 @@ const LocationHours = () => {
                       {email && (
                         <a
                           href={`mailto:${email}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide px-3 py-2 rounded-sm border border-[var(--color-text-light)]/30 text-text-main hover:border-accent hover:text-accent transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide px-3 py-2 rounded-sm border border-(--color-text-light)/30 text-text-main hover:border-accent hover:text-accent transition-colors"
                         >
                           <IconMail className="w-3 h-3" />
                           Email
@@ -298,7 +298,7 @@ const LocationHours = () => {
 
                 {/* Hours — receipt-style list */}
                 {hours && hours.length > 0 && (
-                  <div className="py-5 border-t border-dashed border-[var(--color-text-light)]/30">
+                  <div className="py-5 border-t border-dashed border-(--color-text-light)/30">
                     <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-3">
                       <IconClock className="w-3 h-3" />
                       Hours
@@ -317,12 +317,12 @@ const LocationHours = () => {
                               className={`font-mono text-xs uppercase tracking-wide shrink-0 ${
                                 isToday
                                   ? "text-accent font-bold"
-                                  : "text-[var(--color-text-light)]"
+                                  : "text-(--color-text-light)"
                               }`}
                             >
                               {item.day}
                             </span>
-                            <span className="flex-1 border-b border-dotted border-[var(--color-text-light)]/40 translate-y-[-3px]" />
+                            <span className="flex-1 border-b border-dotted border-(--color-text-light)/40 translate-y-[-3px]" />
                             <span
                               className={`font-mono text-sm tabular-nums shrink-0 ${
                                 isToday
@@ -341,7 +341,7 @@ const LocationHours = () => {
 
                 {/* Reserve CTA, only if provided by tenant config */}
                 {reservationUrl && (
-                  <div className="pt-5 pb-3 border-t border-dashed border-[var(--color-text-light)]/30">
+                  <div className="pt-5 pb-3 border-t border-dashed border-(--color-text-light)/30">
                     <a
                       href={reservationUrl}
                       target="_blank"
@@ -363,7 +363,7 @@ const LocationHours = () => {
             <div className="lg:col-span-7">
               <div className="relative">
                 <div className="absolute -inset-2 border border-accent/30 rounded-sm -z-10 translate-x-2 translate-y-2" />
-                <div className="relative overflow-hidden rounded-sm bg-[var(--color-surface)] min-h-[320px] md:min-h-[440px] h-full">
+                <div className="relative overflow-hidden rounded-sm bg-(--color-surface) min-h-[320px] md:min-h-[440px] h-full">
                   <div
                     className="w-full h-full grayscale-[0.2] contrast-[1.02]"
                     dangerouslySetInnerHTML={{ __html: mapEmbed }}
@@ -373,7 +373,7 @@ const LocationHours = () => {
                       href={directionsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-[var(--color-surface)] text-text-main text-xs font-semibold uppercase tracking-wide px-4 py-2.5 rounded-sm shadow-md hover:bg-accent hover:text-white transition-colors"
+                      className="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-(--color-surface) text-text-main text-xs font-semibold uppercase tracking-wide px-4 py-2.5 rounded-sm shadow-md hover:bg-accent hover:text-white transition-colors"
                     >
                       <IconPin className="w-3.5 h-3.5" />
                       Get Directions

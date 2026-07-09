@@ -13,7 +13,7 @@ const Navbar = ({ isStatic = false }) => {
       className={
         isStatic
           ? "w-full relative z-50"
-          : "fixed top-3 left-4 right-4 lg:left-5 lg:right-5 z-[9999]"
+          : "fixed top-3 left-4 right-4 lg:left-5 lg:right-5 z-9999"
       }
     >
       <header className="flex items-center justify-between pb-6">

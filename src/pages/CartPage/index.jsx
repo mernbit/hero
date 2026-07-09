@@ -102,7 +102,7 @@ const CartPage = () => {
                   </div>
                 </div>
 
-                <div className="h-[1px] w-full bg-gray-100 mb-6"></div>
+                <div className="h-px w-full bg-gray-100 mb-6"></div>
 
                 <div className="flex justify-between items-center mb-8">
                   <span className="font-bold text-[18px] text-text-main uppercase">Total</span>

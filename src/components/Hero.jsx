@@ -2,8 +2,8 @@ import React, { useRef, useState, useCallback } from "react";
 import { useGSAP } from "@gsap/react";
 
 import gsap from "gsap";
-import Navbar from "../../components/Navbar";
-import { useTenant } from "../../context/TenantContext";
+import Navbar from "./Navbar";
+import { useTenant } from "../context/TenantContext";
 
 /** Calculate scale needed for a 60px circle to cover the entire viewport */
 const getRevealScale = () => {
@@ -478,7 +478,7 @@ const Hero = () => {
             </p> */}
             <button
               ref={buttonRef}
-              className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:bg-[var(--color-button-primary-hover)] hover:-translate-y-0.5 transition-all"
+              className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:bg-(--color-button-primary-hover) hover:-translate-y-0.5 transition-all"
             >
               {tenant.hero.buttonText}
             </button>
@@ -553,7 +553,7 @@ const Hero = () => {
                   <div
                     key={f.name}
                     onClick={() => handleFlavorClick(f)}
-                    className={`flex items-center gap-[10px] lg:gap-[14px] rounded-full py-2 lg:py-3 pr-6 lg:pr-14 pl-2 min-w-[140px] lg:min-w-[180px] cursor-pointer border-2 transition-all shrink-0 hover:scale-105 ${isActive ? "border-lavender bg-white shadow-md" : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)]"}`}
+                    className={`flex items-center gap-[10px] lg:gap-[14px] rounded-full py-2 lg:py-3 pr-6 lg:pr-14 pl-2 min-w-[140px] lg:min-w-[180px] cursor-pointer border-2 transition-all shrink-0 hover:scale-105 ${isActive ? "border-lavender bg-white shadow-md" : "border-(--color-border) bg-(--color-surface) hover:bg-(--color-surface-alt)"}`}
                   >
                     <img
                       src={f.img}

@@ -14,7 +14,7 @@ const TopDeals = () => {
   };
 
   return (
-    <div className="w-full bg-[var(--color-surface-alt)] relative py-16 overflow-hidden">
+    <div className="w-full bg-(--color-surface-alt) relative py-16 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         {/* Header */}
         <div className="mb-10 flex flex-col items-start">
@@ -33,7 +33,7 @@ const TopDeals = () => {
             <div
               key={deal.id}
               onClick={() => openModal(deal)}
-              className="relative bg-[var(--color-surface)] rounded-xl overflow-visible group flex flex-col cursor-pointer"
+              className="relative bg-(--color-surface) rounded-xl overflow-visible group flex flex-col cursor-pointer"
               style={{
                 boxShadow: "0 4px 15px var(--color-shadow)",
                 border: "1px solid var(--color-border)"
@@ -99,7 +99,7 @@ const TopDeals = () => {
               {/* Overlapping Button */}
               <button
                 onClick={(e) => { e.stopPropagation(); openModal(deal); }}
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-accent text-white py-[8px] px-5 rounded-[6px] font-bold text-[12px] cursor-pointer whitespace-nowrap tracking-wider hover:bg-[var(--color-button-primary-hover)] transition-all border-none"
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-accent text-white py-[8px] px-5 rounded-[6px] font-bold text-[12px] cursor-pointer whitespace-nowrap tracking-wider hover:bg-(--color-button-primary-hover) transition-all border-none"
               >
                 + ADD TO BUCKET
               </button>

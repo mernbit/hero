@@ -18,7 +18,7 @@ const ProductModal = () => {
 
   return (
     <div 
-      className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/60 backdrop-blur-[2px] opacity-0 animate-[fadeIn_0.3s_ease-out_forwards]"
+      className="fixed inset-0 z-10000 flex items-center justify-center p-4 bg-black/60 backdrop-blur-[2px] opacity-0 animate-[fadeIn_0.3s_ease-out_forwards]"
       onClick={closeModal}
     >
       {/* Modal Container */}

@@ -118,7 +118,7 @@ const AboutUs = () => {
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-y-14 lg:gap-x-12">
           {/* Spine — ties the two columns together on large screens */}
           <div className="hidden lg:block absolute left-[calc(41.666%+1.5rem)] top-2 bottom-2 w-px bg-(--color-border)">
-            <span className="absolute -left-[3px] top-0 w-[7px] h-[7px] rounded-full bg-accent" />
+            <span className="absolute left-[-3px] top-0 w-[7px] h-[7px] rounded-full bg-accent" />
           </div>
 
           {/* Left: Image */}
@@ -126,7 +126,7 @@ const AboutUs = () => {
             <div className="lg:col-span-5">
               <div className="about-image relative group">
                 <div className="about-frame absolute -inset-3 border border-accent/30 rounded-sm -z-10 translate-x-3 translate-y-3" />
-                <div className="relative overflow-hidden rounded-sm bg-(--color-surface) aspect-[4/5] shadow-[0_20px_25px_-5px_var(--color-shadow)]">
+                <div className="relative overflow-hidden rounded-sm bg-(--color-surface) aspect-4/5 shadow-[0_20px_25px_-5px_var(--color-shadow)]">
                   <img
                     src={image}
                     alt="About us"
@@ -153,7 +153,7 @@ const AboutUs = () => {
               <div
                 className={
                   description
-                    ? "mt-10 pt-10 border-t border-[var(--color-border)]"
+                    ? "mt-10 pt-10 border-t border-(--color-border)"
                     : ""
                 }
               >
@@ -184,7 +184,7 @@ const AboutUs = () => {
                 >
                   0
                 </div>
-                <div className="text-xs uppercase tracking-[0.15em] text-[var(--color-text-light)]">
+                <div className="text-xs uppercase tracking-[0.15em] text-(--color-text-light)">
                   {stat.label}
                 </div>
               </div>
