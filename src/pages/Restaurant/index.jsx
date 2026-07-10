@@ -23,7 +23,7 @@ const Restaurant = () => {
       <CartProvider>
         <div className="w-full">
           <Hero />
-          <AnimatedRoadmap />
+          {/* <AnimatedRoadmap /> */}
           <ExploreMenu />
           <Menu />
           <Gallery />
