@@ -423,7 +423,7 @@ const Hero = () => {
           >
             <div
               ref={textMaskRef}
-              className="relative overflow-y-clip w-full  h-[150px] lg:h-[180px]"
+              className="relative overflow-y-clip w-full  h-[150px] lg:h-[190px]"
             >
               {/* Ghost (old) text — pushes OUT */}
               <div
@@ -464,18 +464,6 @@ const Hero = () => {
                 </p>
               </div>
             </div>
-            {/* <h1
-              ref={headingRef}
-              className="bungee-regular font-black text-[48px] lg:text-[64px] leading-none mb-4 text-text-main"
-            >
-              {activeFlavor.name}
-            </h1>
-            <p
-              ref={descRef}
-              className="text-[14px] lg:text-[15px] leading-[1.6] text-text-muted max-w-[280px] lg:max-w-[220px] mb-7"
-            >
-              {activeFlavor.desc}
-            </p> */}
             <button
               ref={buttonRef}
               className="inline-block py-[14px] px-8 bg-accent text-white border-none rounded-full text-[14px] font-semibold cursor-pointer tracking-[0.5px] shadow-lg hover:bg-(--color-button-primary-hover) hover:-translate-y-0.5 transition-all"
@@ -497,7 +485,7 @@ const Hero = () => {
                   <img
                     key={i}
                     ref={(el) => (particleRefs.current[i] = el)}
-                    src={i < 5 ? activeFlavor.particle : `/images/${activeFlavor.name.toLowerCase()}-sub-particle.png`}
+                    src={i < 5 ? activeFlavor.particle : (activeFlavor.subParticle || `/images/${activeFlavor.name.toLowerCase()}-sub-particle.png`)}
                     alt=""
                     className={`absolute object-contain opacity-0 scale-50 ${i < 5 ? 'w-24 h-24 lg:w-36 lg:h-36' : 'w-16 h-16 lg:w-24 lg:h-24'}`}
                   />

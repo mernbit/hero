@@ -12,6 +12,7 @@ import BookATable from "../../components/BookATable";
 import Testimonials from "../../components/Testimonials";
 import AboutUs from "../../components/AboutUs";
 import LocationHours from "../../components/LocationHours";
+import AnimatedRoadmap from "../../components/AnimatedRoadmap";
 
 const Restaurant = () => {
   // Extract the slug from the URL e.g. /the-creamery or /abc-restaurant
@@ -22,6 +23,7 @@ const Restaurant = () => {
       <CartProvider>
         <div className="w-full">
           <Hero />
+          <AnimatedRoadmap />
           <ExploreMenu />
           <Menu />
           <Gallery />
