@@ -168,7 +168,7 @@ const Testimonials = () => {
       <div className="pointer-events-none absolute bottom-0 right-0 w-96 h-96 rounded-full bg-(--color-text-light)/10 blur-2xl translate-x-1/4 translate-y-1/4" />
 
       <div className="max-w-[720px] mx-auto px-4 md:px-6 relative">
-        <header className="mb-12 md:mb-16 text-center">
+        <div className="mb-12 md:mb-16 text-center">
           <p className="text-sm md:text-base text-text-muted uppercase tracking-widest mb-2">
             Come and join
           </p>
@@ -176,7 +176,7 @@ const Testimonials = () => {
             Our Happy Customers
           </h2>
           <div className="w-[60px] h-[4px] bg-accent mx-auto rounded-full" />
-        </header>
+        </div>
 
         <div
           className="relative"
