@@ -145,13 +145,12 @@ export default function AnimatedRoadmap() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=300", // tune: bigger = slower/longer scroll to complete
-          scrub: 1,
-          markers: true,
+          end: "+=3300", // tune: bigger = slower/longer scroll to complete
+          scrub: 2,
+          // markers: true,
           pin: true,
           invalidateOnRefresh: true, // recalculate start/end on ScrollTrigger.refresh()
           // anticipatePin: 1,
-          markers: true, // uncomment while debugging
         },
       });
       console.log("[AnimatedRoadmap trigger created]", performance.now());

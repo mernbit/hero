@@ -25,7 +25,7 @@ const Restaurant = () => {
           <Hero />
           <ExploreMenu />
           <Menu />
-          {/* <AnimatedRoadmap /> */}
+          <AnimatedRoadmap />
           <Gallery />
           <TopDeals />
           <Testimonials />
