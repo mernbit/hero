@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 
 import gsap from "gsap";
@@ -17,6 +17,27 @@ const Hero = () => {
   const tenant = useTenant();
   const flavors = tenant.flavors;
   const [activeFlavor, setActiveFlavor] = useState(flavors[0]);
+
+  // Add this near your other refs/state in Hero.jsx — does not touch any existing animation code
+
+  useEffect(() => {
+    const imagesToPreload = [];
+
+    flavors.forEach((flavor) => {
+      imagesToPreload.push(flavor.cone);
+      imagesToPreload.push(flavor.particle);
+      imagesToPreload.push(
+        flavor.subParticle ||
+          `/images/${flavor.name.toLowerCase()}-sub-particle.png`,
+      );
+    });
+
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [flavors]);
+
   const heroRef = useRef();
   document.title = tenant.name;
   // Refs for animated elements
@@ -485,9 +506,14 @@ const Hero = () => {
                   <img
                     key={i}
                     ref={(el) => (particleRefs.current[i] = el)}
-                    src={i < 5 ? activeFlavor.particle : (activeFlavor.subParticle || `/images/${activeFlavor.name.toLowerCase()}-sub-particle.png`)}
+                    src={
+                      i < 5
+                        ? activeFlavor.particle
+                        : activeFlavor.subParticle ||
+                          `/images/${activeFlavor.name.toLowerCase()}-sub-particle.png`
+                    }
                     alt=""
-                    className={`absolute object-contain opacity-0 scale-50 ${i < 5 ? 'w-24 h-24 lg:w-36 lg:h-36' : 'w-16 h-16 lg:w-24 lg:h-24'}`}
+                    className={`absolute object-contain opacity-0 scale-50 ${i < 5 ? "w-24 h-24 lg:w-36 lg:h-36" : "w-16 h-16 lg:w-24 lg:h-24"}`}
                   />
                 ))}
             </div>

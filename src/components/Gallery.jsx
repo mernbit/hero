@@ -36,7 +36,7 @@ const Gallery = () => {
     <section id="gallery" className="w-full bg-(--color-page-bg) relative py-16 md:py-24 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         {/* Header */}
-        <header className="mb-12 md:mb-16 text-center">
+        <div className="mb-12 md:mb-16 text-center">
           {/* Pill Badge */}
           <div className="inline-block bg-accent text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
             Our Moments
@@ -48,7 +48,7 @@ const Gallery = () => {
             Gallery
           </h2>
           <div className="w-[60px] h-[4px] bg-accent mx-auto rounded-full"></div>
-        </header>
+        </div>
 
         {/* Polaroid Gallery - Desktop/Tablet */}
         <div className="hidden md:block">

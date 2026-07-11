@@ -23,9 +23,9 @@ const Restaurant = () => {
       <CartProvider>
         <div className="w-full">
           <Hero />
-          {/* <AnimatedRoadmap /> */}
           <ExploreMenu />
           <Menu />
+          <AnimatedRoadmap />
           <Gallery />
           <TopDeals />
           <Testimonials />

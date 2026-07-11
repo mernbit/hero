@@ -182,6 +182,16 @@
     ],
     "mapEmbed": ""
   },
+  "roadmap": [
+    { "type": "text", "content": "START" },
+    { "type": "icon-text", "icon": "/roadmap/grass.png", "text": "FRESH GRASS FED BEEF" },
+    { "type": "text", "content": "PRESSED INTO A BALL" },
+    { "type": "icon-text", "icon": "/roadmap/grill.png", "text": "PRESSED INTO GRILL" },
+    { "type": "icon-text", "icon": "/roadmap/cook.png", "text": "THAT GIVES YOU A BURGER" },
+    { "type": "icon-text", "icon": "/roadmap/pile.png", "text": "PILE UP PATTIES" },
+    { "type": "icon-text", "icon": "/roadmap/sauce.png", "text": "ADD YOUR FLAVOURS" },
+    { "type": "icon-text", "icon": "/roadmap/burger.png", "text": "BURGER" }
+  ],
   "footer": {
     "description": "At ABC Restaurant, we serve only the crispiest, juiciest fried chicken made from our secret recipe. Every bite is a crunch of perfection, seasoned with love and spices from around the world.",
     "phone": "021-111-222-333",
