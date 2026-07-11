@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -12,6 +12,7 @@ import ExploreMenuPage from "./pages/ExploreMenuPage";
 import CartPage from "./pages/CartPage";
 import { TenantProvider } from "./context/TenantContext";
 import { CartProvider } from "./context/CartContext";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Wrapper to provide TenantContext for standalone pages
 const TenantPageWrapper = ({ children }) => {

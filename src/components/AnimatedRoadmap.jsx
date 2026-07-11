@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -87,6 +87,24 @@ export default function AnimatedRoadmap() {
     steps: 240,
   });
 
+  // Recalculate ScrollTrigger positions after all page resources (images,
+  // fonts like bungee-regular, etc.) have finished loading. Without this,
+  // the trigger's start/end are computed against a partially-laid-out page
+  // when the user refreshes at the top and scrolls down.
+  useEffect(() => {
+    const onLoad = () => ScrollTrigger.refresh();
+
+    if (document.readyState === "complete") {
+      // Already loaded (e.g. SPA navigation) — refresh after a microtask
+      // so the current render cycle finishes first.
+      const id = requestAnimationFrame(() => ScrollTrigger.refresh());
+      return () => cancelAnimationFrame(id);
+    }
+
+    window.addEventListener("load", onLoad);
+    return () => window.removeEventListener("load", onLoad);
+  }, []);
+
   useGSAP(
     () => {
       const path = pathRef.current;
@@ -127,14 +145,16 @@ export default function AnimatedRoadmap() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=3000", // tune: bigger = slower/longer scroll to complete
+          end: "+=300", // tune: bigger = slower/longer scroll to complete
           scrub: 1,
+          markers: true,
           pin: true,
-          anticipatePin: 1,
-          // markers: true, // uncomment while debugging
+          invalidateOnRefresh: true, // recalculate start/end on ScrollTrigger.refresh()
+          // anticipatePin: 1,
+          markers: true, // uncomment while debugging
         },
       });
-
+      console.log("[AnimatedRoadmap trigger created]", performance.now());
       // Draw the path over an explicit 0 -> 1 span of timeline time.
       tl.to(path, { strokeDashoffset: 0, ease: "none", duration: 1 }, 0);
 
@@ -156,7 +176,7 @@ export default function AnimatedRoadmap() {
   return (
     <div
       ref={containerRef}
-      className="h-screen w-full flex items-center justify-center bg-(--color-page-bg)"
+      className="h-screen w-full flex items-center overflow-hidden justify-center bg-(--color-page-bg)"
     >
       <div
         ref={wrapperRef}
@@ -204,7 +224,7 @@ export default function AnimatedRoadmap() {
                     <img
                       src={item.icon}
                       alt={item.text}
-                      className={`object-contain ${i === 7 ? 'w-[120px] h-[120px]' : 'w-[60px] h-[60px]'}`}
+                      className={`object-contain ${i === 7 ? "w-[120px] h-[120px]" : "w-[60px] h-[60px]"}`}
                     />
                     <span className="text-xs font-bold text-text-main mt-1 whitespace-nowrap">
                       {item.text}
